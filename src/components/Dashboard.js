@@ -13,7 +13,7 @@ export default function Dashboard() {
 
         try{
             await logout()
-            history.pushState('/login')
+            history.push('/login')
         }catch{
             setError('Failed to log out')
         }
@@ -25,6 +25,8 @@ export default function Dashboard() {
                 <h2 className="text-center mb-4">Profile</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
                     <strong>Email: </strong>{currentUser.email}
+
+                    <strong>Username: </strong>{currentUser.displayName}
                     <Link to="/update-profile" className="btn btn-primary w-100 m-3">Update Profile</Link>
                 </Card.Body>
             </Card>

@@ -11,11 +11,19 @@ export function AuthProvider({children}) {
     const[currentUser,setCurrentUser]=useState()
     const[loading,setLoading]=useState(true)
 
-    function signup(email,password){
-        return auth.createUserWithEmailAndPassword(email,password)
+    function signup(email,password, username){
+        auth.createUserWithEmailAndPassword(email,password)
+        .then(function(result) {
+            return result.user.updateProfile({
+                displayName: username
+            })
+        }).catch(function(error) {
+            console.log(error);
+        })
     }
-
+    
     function login(email,password){
+        console.log(auth.signInWithEmailAndPassword(email,password));
         return auth.signInWithEmailAndPassword(email,password)
     }
     
@@ -26,10 +34,11 @@ export function AuthProvider({children}) {
         })
         return unsubscribe
     },[])
-    
+
     const value ={
         currentUser,
         login,
+        //updateUsername,
         signup
     }
     return (
