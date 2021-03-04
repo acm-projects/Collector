@@ -1,7 +1,5 @@
-import { database } from 'firebase-admin'
 import React,{ useContext, useState, useEffect} from 'react'
-import { auth, db } from'../firebase'
-
+import { auth,db } from'../firebase'
 
 const AuthContext=React.createContext()
 
@@ -15,11 +13,14 @@ export function AuthProvider({children}) {
 
     function signup(email,password, username){
         auth.createUserWithEmailAndPassword(email,password)
-        .then(function(result) {
-            db.users.add({
-                displayName: username,
-                userId: currentUser.uid
-            })
+        .then(
+            function(result) {
+                //Upon a successful user creation we store the unique username into the database
+                db.users.add({
+                    displayName: username,
+                    uid: currentUser.uid
+                })
+                //We update the user display name in the user context
             return result.user.updateProfile({
                 displayName: username
             })

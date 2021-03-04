@@ -18,7 +18,8 @@ export default function Login() {
             setError("")
             setLoading(true)
             await login(emailRef.current.value,passwordRef.current.value)
-            history.pushState("/")
+            history.push("/")
+            console.log(error)
         }catch{
             setError('Failed to sign in')
         }
