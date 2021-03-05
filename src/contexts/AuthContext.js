@@ -12,8 +12,9 @@ export function AuthProvider({children}) {
     const[loading,setLoading]=useState(true)
 
     function signup(email,password, username){
-        auth.createUserWithEmailAndPassword(email,password)
-        .then(
+        try {
+            auth.createUserWithEmailAndPassword(email,password)
+            .then(
             function(result) {
                 //Upon a successful user creation we store the unique username into the database
                 db.users.add({
@@ -21,12 +22,21 @@ export function AuthProvider({children}) {
                     uid: currentUser.uid
                 })
                 //We update the user display name in the user context
-            return result.user.updateProfile({
+            result.user.updateProfile({
                 displayName: username
             })
-        }).catch(function(error) {
-            console.log(error);
+        }).catch(error => {   
+            switch(error.code) {
+              case 'auth/email-already-in-use':
+                    alert('Email already in use !')
+                    break;
+            }
         })
+        } catch(err) {
+            alert("Error : ", err);
+            return err;
+        }
+        
     }
     
     function login(email,password){
