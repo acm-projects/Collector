@@ -1,155 +1,78 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { AppBar, Toolbar, IconButton, Icon } from '@material-ui/core';
-import { Menu, LockOutlined } from '@material-ui/icons';
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-
+import { Button, createMuiTheme, Grid, InputAdornment, TextField, ThemeProvider } from '@material-ui/core';
+import { AccountCircle, LockRounded } from '@material-ui/icons';
 
 const theme = createMuiTheme(
-    {
-    palette: {
-      primary: {
-        light: '#5e677d',
-        main: '#333d51',
-        dark: '#0b1729',
-        contrastText: '#fff',
-      },
-      secondary: {
-        light: '#ffdd5e',
-        main: '#d3ac2b',
-        dark: '#9e7d00',
-        contrastText: '#000',
-      },
-    },
-  });
-
-function Copyright() 
   {
-      return (
-        <Typography variant="body2" color="textSecondary" align="center">
-          {'Copyright © '}
-          <Link color="inherit" href="https://material-ui.com/">
-            Your Website
-          </Link>{' '}
-          {new Date().getFullYear()}
-          {'.'}
-        </Typography>
-      );
-  }
-  
-const useStyles = makeStyles((theme) => ({
-      paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      },
-      avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-      },
-      form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
-      },
-      submit: {
-        margin: theme.spacing(3, 0, 2),
-      },
-    }));
-  
-    export default function SignIn() {
-        const classes = useStyles();
-      
-        return (
-          <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <div className={classes.paper}>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <Menu />
-                    </IconButton>
-                    <Typography variant="h6" className={classes.title}>
-                    Collector
-                    </Typography>
-                    <Button color="inherit">Login</Button>
-                </Toolbar>
-            </AppBar>
-              <Avatar className={classes.avatar}>
-                <Icon>
-                    <LockOutlined />
-                /</Icon>
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Sign in
-              </Typography>
-              <form className={classes.form} noValidate>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                />
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                />
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                >
-                  Sign In
-                </Button>
-                <Grid container>
-                  <Grid item xs>
-                    <Link href="#" variant="body2">
-                      Forgot password?
-                    </Link>
-                  </Grid>
-                  <Grid item>
-                    <Link href="#" variant="body2">
-                      {"Don't have an account? Sign Up"}
-                    </Link>
-                  </Grid>
-                </Grid>
-              </form>
-            </div>
-            <Box mt={8}>
-              <Copyright />
-            </Box>
-          </Container>
-        );
-      }
-      
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+    <div>
+     <Grid container style={{ minHeight: '100vh'}}>
+       <Grid item xs={12} sm ={6}>
+         <img src="https://images.unsplash.com/photo-1520367288098-2794e86c3586?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+         style={{ width: '100%', height: '100%', objectFit: 'cover'}} 
+         alt="brand" 
+         />
+       </Grid>
+       <Grid container item xs={12} sm={6} 
+       alignItems="center" 
+       direction="column" 
+       justify="space-between" 
+       style={{padding: 10}}>
+         <div />
+         <div style={{ display: 'flex', flexDirection: "column", maxWidth: 400, minWidth: 300 }}>
+          <Grid container justify="center">
+            <img src="https://files.slack.com/files-pri/T1CH1JVUZ-F01Q70LUMTL/image.png"
+            width={200} 
+            alt="logo" 
+            />
+            <h1>Welcome to collector</h1>
+            <h2>Log in to add to your collection</h2>
+          </Grid>
+          <TextField label="Username" margin="normal" InputProps={{ startAdornment: <InputAdornment position="start">
+            <AccountCircle color="secondary" />
+          </InputAdornment>}} />
+          <TextField label="Password" margin="normal" InputProps={{ startAdornment: <InputAdornment position="start">
+            <LockRounded color="secondary" />
+          </InputAdornment>}}/>
+          <div style={{ height: 20}} />
+          <Button color="secondary" variant="contained">
+            Log in            
+          </Button>
+          <div style={{ height: 20}} />
+          <Button color="primary" variant="outlined">
+            Not a collector yet?            
+          </Button>
+         </div>
+         <div>
+           <Grid item>
+             <Button color="primary" variant="outlined">
+               Forgot your password?
+             </Button>
+           </Grid>
+         </div>
+       </Grid>
+     </Grid>
+    </div>
+    </ThemeProvider>
+  );
+}
+
+export default App;
