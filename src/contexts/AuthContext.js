@@ -26,8 +26,8 @@ export function AuthProvider({children}) {
                 displayName: username
             })
         }).catch(error => {   
-            switch(error.code) {
-              case 'auth/email-already-in-use':
+        switch(error.code) {
+            case 'auth/email-already-in-use':
                     alert('Email already in use !')
                     break;
             }
@@ -38,7 +38,7 @@ export function AuthProvider({children}) {
         }
         
     }
-    
+
     function login(email,password){
         console.log(auth.signInWithEmailAndPassword(email,password));
         return auth.signInWithEmailAndPassword(email,password)
