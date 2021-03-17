@@ -17,10 +17,7 @@ export function AuthProvider({children}) {
             .then(
             function(result) {
                 //Upon a successful user creation we store the unique username into the database
-                db.users.add({
-                    displayName: username,
-                    uid: currentUser.uid
-                })
+                addDisplayName(username)
                 //We update the user display name in the user context
             result.user.updateProfile({
                 displayName: username
@@ -38,6 +35,14 @@ export function AuthProvider({children}) {
         }
         
     }
+
+    async function addDisplayName(username){
+        await db.users.add({
+            displayName: username,
+            uid: currentUser.uid
+        })
+    }
+
 
     function login(email,password){
         console.log(auth.signInWithEmailAndPassword(email,password));
