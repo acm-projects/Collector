@@ -34,6 +34,9 @@ export default function Dashboard() {
             <div className="w-100 text-center mt-2">
                 <Button variant="link" onClick={handleLogout}>Log Out</Button>
             </div>
+            <div className="w-100 text-center mt-2">
+                    <Link to="/sell"> Sell Something!</Link>
+            </div>
         </>
     )
 }

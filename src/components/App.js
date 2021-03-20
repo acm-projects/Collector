@@ -12,6 +12,7 @@ import Dashboard from "./Dashboard"
 import Login from "./Login"
 import PrivateRoute from "./PrivateRoute"
 import Homepage from "./Homepage"
+import CreateListing from "./CreateListing"
 
 function App() { 
   return (
@@ -24,6 +25,7 @@ function App() {
            <Route exact path="/" component={Dashboard}/> 
            <Route path="/signup" component={Signup}/>
            <Route path="/login" component={Login}/>
+           <Route path="/sell" component={CreateListing}/>
          </Switch>
        </AuthProvider>
        </Router>

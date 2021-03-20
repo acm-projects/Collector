@@ -14,7 +14,8 @@ const app=firebase.initializeApp({
 
 const firestore=app.firestore()
 export const db={
-    users: firestore.collection('users')
+    users: firestore.collection('users'),
+    listings: firestore.collection('listings')
 }
 export const auth=app.auth()
 export default app
