@@ -1,8 +1,3 @@
-/*
-  DISCLAIMER: THE CONTENTS INVOLVING THE BASIC STRUCTURE OF THE LOGIN PAGE BELONG TO "Web Dev Simplified"
-  Tutorial URL: https://www.youtube.com/watch?v=PKwu15ldZ7k
-*/
-
 import React from "react"
 import Signup from "./Signup"
 import { Container } from "react-bootstrap"

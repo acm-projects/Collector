@@ -12,6 +12,8 @@ export default function CreateListing() {
     const {currentUser,logout}=useAuth()
     const [error,setError]=useState('')
     const [loading,setLoading]=useState(false)
+    var date = Date().toLocaleString()
+
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -56,7 +58,8 @@ export default function CreateListing() {
             listingType: listingTypeRef,
             owner: currentUser.displayName,
             uid: currentUser.uid,
-            status: "on-sale"
+            status: "on-sale",
+            saleDate: date
         })
     }
     /*Created a dummy "create listing" page. We are now capable of posting listings to our website.*/
