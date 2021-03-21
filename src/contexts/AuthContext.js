@@ -22,13 +22,13 @@ export function AuthProvider({children}) {
             result.user.updateProfile({
                 displayName: username
             })
-        }).catch(error => {   
-        switch(error.code) {
-            case 'auth/email-already-in-use':
-                    alert('Email already in use !')
-                    break;
-            }
-        })
+            }).catch(error => {   
+                switch(error.code) {
+                    case 'auth/email-already-in-use':
+                            alert('Email already in use !')
+                            break;
+                    }
+                })
         } catch(err) {
             alert("Error : ", err);
             return err;
