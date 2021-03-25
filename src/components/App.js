@@ -13,6 +13,7 @@ import Login from "./Login"
 import LandingPage from "./LandingPage"
 import PrivateRoute from "./PrivateRoute"
 import Homepage from "./Homepage"
+import ProductGallery from './ProductGallery'
 import { CssBaseline } from '@material-ui/core';
 
 
@@ -20,7 +21,7 @@ function App() {
   return (
 
     <Container className="d-flex align-items-center justify-content-center" style={{minHeight:"100vh", minWidth: '100vh'}}>
-     <div className="w-100" style={{minWidth:"200vh"}}>
+     <div className="w-100" >
      <CssBaseline />
        <Router>
        <AuthProvider>
@@ -29,6 +30,7 @@ function App() {
            <Route path="/signup" component={Signup}/>
            <Route path="/login" component={Login}/>
            <Route path="/landing" component={LandingPage}/>
+           <Route path="/gallery" component={ProductGallery}/>
          </Switch>
        </AuthProvider>
        </Router>
