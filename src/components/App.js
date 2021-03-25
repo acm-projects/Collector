@@ -20,8 +20,8 @@ import { CssBaseline } from '@material-ui/core';
 function App() { 
   return (
 
-    <Container className="d-flex align-items-center justify-content-center" style={{minHeight:"100vh", minWidth: '100vh'}}>
-     <div className="w-100" >
+    
+     <div>
      <CssBaseline />
        <Router>
        <AuthProvider>
@@ -34,9 +34,7 @@ function App() {
          </Switch>
        </AuthProvider>
        </Router>
-       
       </div>
-    </Container>
   )
 }
 
