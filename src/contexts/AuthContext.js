@@ -27,6 +27,8 @@ export function AuthProvider({children}) {
                     case 'auth/email-already-in-use':
                             alert('Email already in use !')
                             break;
+                    default:
+                        break;
                     }
                 })
         } catch(err) {
