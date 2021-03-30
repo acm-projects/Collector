@@ -46,12 +46,13 @@ export default function Login() {
             setError("")
             setLoading(true)
             await login(emailRef,passwordRef)
-            history.push("/")
+            history.push("/dashboard")
         } catch (err) {
             console.log(err)
             switch(err.code) {
               case "auth/wrong-password":
                 setError('Invalid email or password');
+                break;
               default:
                 setError('Failed to sign in');
             }
