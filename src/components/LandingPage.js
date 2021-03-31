@@ -7,7 +7,7 @@ import TwoOptions from './LandingPageTwoOptions';
 const useStyles = makeStyles((theme) => ({
     root: {
         minHeight: '100vh',
-        backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/pexels-ingo-joseph-188029.jpg'})`,
+        backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/pexels-pixabay-326231.jpg'})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: 'cover',
     },

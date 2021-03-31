@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
   appbarTitle: {
     flexGrow: "1",
     fontSize: "3rem",
+    color: "#fff",
 
   },
   icon: {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from '@material-ui/core';
-import Header from './header';
+import Header from './Header/header';
 import Content from "./Content";
 
 const App= () => {
