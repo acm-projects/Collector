@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImgMediaCard(props) {
+export default function ImgMediaCard(image,title, description) {
   const classes = useStyles();
 
   return (

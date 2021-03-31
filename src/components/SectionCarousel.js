@@ -1,7 +1,6 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel'
 import ImageCard from './CarouselCard'
-import CardContents from '../static/carouselContents';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
