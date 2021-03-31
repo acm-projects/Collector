@@ -179,7 +179,7 @@ const cardSubtitle = {
   marginTop: "-.375rem"
 };
 
-export {
+export default{
   //variables
   drawerWidth,
   transition,
