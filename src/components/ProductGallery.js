@@ -2,7 +2,8 @@ import React from "react";
 import { Grid } from '@material-ui/core';
 import Header from './Header/header';
 import Content from "./Content";
-import Carousel from './SectionCarousel'
+import Carousel from './SectionCarousel';
+import Footer from './footer';
 
 const App= () => {
   return (
@@ -29,7 +30,11 @@ const App= () => {
         </Grid>
         <Grid item xs={0} sm={2} />
       </Grid>
-
+      <Grid item>
+      <br/>
+      <br/>
+          <Footer />
+      </Grid>
     </Grid>
   );
 }
