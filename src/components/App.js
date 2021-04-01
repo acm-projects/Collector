@@ -9,7 +9,8 @@ import ProfilePage from './ProfilePage'
 import ForgotPassword from './ForgotPassword'
 import ProductGallery from './ProductGallery'
 import { CssBaseline } from '@material-ui/core';
-
+import Homepage from './Homepage'
+import CreateListing from './CreateListing'
 
 function App() { 
   return (
@@ -28,6 +29,7 @@ function App() {
            <Route path="/gallery" component={ProductGallery}/>
            <Route path="/forgotpassword" component={ForgotPassword}/>
            <Route path="/profile" component={ProfilePage}/>
+           <Route path="/sell" component={CreateListing} />
          </Switch>
        </AuthProvider>
        </Router>
