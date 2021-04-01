@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.3",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.3",
@@ -14,9 +16,16 @@
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.0",
     "react-dom": "^17.0.1",
+<<<<<<< HEAD
     "react-moment": "^1.1.1",
+=======
+    "react-material-ui-carousel": "^2.2.2",
+>>>>>>> frontend
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-scroll": "^1.8.2",
+    "react-slick": "^0.28.1",
+    "react-swipeable-views": "^0.13.9",
     "web-vitals": "^1.1.0"
   },
   "scripts": {
