@@ -13,6 +13,7 @@ export default [
       condition: "new",
       shipping: "pick up only",
       returns: "yes",
+      category: "Pokemon"
     },
     {
       title: "Pokemon Card 2",
@@ -28,6 +29,7 @@ export default [
         condition: "new",
         shipping: "0",
         returns: "no",
+        category: "Pokemon"
 
     },
     {
@@ -44,6 +46,7 @@ export default [
         condition: "new",
         shipping: "5",
         returns: "no",
+        category: "Pokemon"
 
 
     },
@@ -61,10 +64,11 @@ export default [
         condition: "new",
         shipping: "0",
         returns: "yes",
+        category: "Pokemon"
 
     },
     {
-      title: "Pokemon Card 5",
+      title: "guitar",
       price: "$27.99",
       description:
         "fifth pokemon",
@@ -77,10 +81,11 @@ export default [
         condition: "new",
         shipping: "5",
         returns: "no",
+        category: "Musical Instrument"
 
     },
     {
-      title: "Pokemon Card 6",
+      title: "YugiOh Card 6",
       price: "$4444.99",
       description:
         'sixth pokemon',
@@ -93,6 +98,7 @@ export default [
         condition: "new",
         shipping: "5",
         returns: "yes",
+        category: "YuGiOh"
 
     }
   ];

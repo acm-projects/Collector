@@ -8,12 +8,19 @@ import Typography from '@material-ui/core/Typography';
 import { Avatar, CardHeader, IconButton, CardMedia } from '@material-ui/core';
 import {StarBorder} from '@material-ui/icons';
 
-
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 685,
+    minHeight: 350,
+  },
+  
+});
 
 const ProductCard = (props) => {
   const {avatar, title, price, description, image} = props;
+  const classes = useStyles();
   return (
-    <Card style={{ minHeight: '32vw', padding: '10px'}}>
+    <Card className={classes.root}>
         <CardHeader
         avatar={ <Avatar src={avatar} />}
         action={
@@ -32,7 +39,7 @@ const ProductCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Buy Now</Button>
+        <Button size="small">Add To Cart</Button>
       </CardActions>
     </Card>
   );
