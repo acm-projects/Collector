@@ -4,6 +4,13 @@ import Header from './Header/header';
 import Content from "./Content";
 import Carousel from './SectionCarousel';
 import Footer from './footer';
+import Category from './Filters/Category';
+import Condition from './Filters/condition';
+import Price from './Filters/price';
+import Return from './Filters/returns';
+import Sort from './Filters/sort';
+
+
 
 const App= () => {
   return (
@@ -23,8 +30,17 @@ const App= () => {
         </Grid>
         <Grid item xs={0} sm={2} />
       </Grid>
+      
       <Grid Item container>
-        <Grid item xs={0} sm={2}/>
+        <Grid item xs={0} sm={2}>
+        <Sort/>
+          <Category />
+          <Condition/>
+          <Price />
+          <Return />
+          
+        </Grid>
+
         <Grid item xs={12} sm={8}>
           <Content />
         </Grid>
