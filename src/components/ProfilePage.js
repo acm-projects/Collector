@@ -10,27 +10,26 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
 // core components
-import Footer from "components/Footer/Footer.js";
-import Button from "components/CustomButtons/Button.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import NavPills from "components/NavPills/NavPills.js";
-import Parallax from "components/Parallax/Parallax.js";
+import Footer from "./Footer/Footer";
+import Button from "./CustomButtons/Button.js";
+import GridContainer from "../components/Grid/GridContainer";
+import GridItem from "../components/Grid/GridItem.js";
+import NavPills from "../components/NavPills/NavPills.js";
+import Parallax from "../components/Parallax/Parallax.js";
 
-import profile from "assets/img/faces/hector.jpeg";
+import profile from "../assets/img/faces/hector.jpeg";
+import post1 from "../assets/img/examples/post-1.jpg";
+import post2 from "../assets/img/examples/post-2.jpg";
+import post3 from "../assets/img/examples/post-3.jpg";
+import post4 from "../assets/img/examples/post-4.jpg";
+import post5 from "../assets/img/examples/post-5.jpeg";
+import available1 from "../assets/img/examples/feature-stamp.jpg";
+import available2 from "../assets/img/examples/guitar.jpg";
+import available3 from "../assets/img/examples/charizard.jpeg";
+import available4 from "../assets/img/examples/button.jpg";
+import available5 from "../assets/img/examples/coin.jpeg";
 
-import post1 from "assets/img/examples/post-1.jpg";
-import post2 from "assets/img/examples/post-2.jpg";
-import post3 from "assets/img/examples/post-3.jpg";
-import post4 from "assets/img/examples/post-4.jpg";
-import post5 from "assets/img/examples/post-5.jpeg";
-import available1 from "assets/img/examples/feature-stamp.jpg";
-import available2 from "assets/img/examples/guitar.jpg";
-import available3 from "assets/img/examples/charizard.jpeg";
-import available4 from "assets/img/examples/button.jpg";
-import available5 from "assets/img/examples/coin.jpeg";
-
-import styles from "assets/jss/profilePage.js";
+import styles from "../assets/jss/profilePage.js";
 
 const useStyles = makeStyles(styles);
 
@@ -45,7 +44,7 @@ export default function ProfilePage(props) {
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
   return (
     <div>
-      <Parallax small filter image={require("assets/img/profile-bg.jpg")} />
+      <Parallax small filter image={require("../assets/img/profile-bg.jpg")} />
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div>
           <div className={classes.container}>

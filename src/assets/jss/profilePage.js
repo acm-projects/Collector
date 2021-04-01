@@ -1,7 +1,7 @@
-import { container, title } from "assets/jss/material-kit-react.js";
+import { container, title } from "./material-kit-react.js";
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import imagesStyle from "assets/jss/material-kit-react/imagesStyles.js";
+import imagesStyle from "./material-kit-react/imagesStyles";
 
 const profilePageStyle = {
   container,
