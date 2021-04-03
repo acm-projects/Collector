@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, createMuiTheme, Grid, InputAdornment, TextField, ThemeProvider } from '@material-ui/core';
 import { AccountCircle, LockRounded } from '@material-ui/icons';
-
+import Footer from "./footer";
+import Header from './Header/header'
 const theme = createMuiTheme(
   {
   palette: {
@@ -24,6 +25,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <div>
+      <Header />
      <Grid container style={{ minHeight: '100vh'}}>
        <Grid item xs={12} sm ={6}>
          <img src="https://images.unsplash.com/photo-1520367288098-2794e86c3586?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
@@ -70,6 +72,8 @@ function App() {
          </div>
        </Grid>
      </Grid>
+     <Footer />
+
     </div>
     </ThemeProvider>
   );

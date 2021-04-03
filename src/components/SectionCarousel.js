@@ -18,7 +18,7 @@ function Example(props)
 {
     var items = [
         {
-            name: "Poekmon Cards",
+            name: "Pokemon Cards",
             description: "Check out amazing Pokemon Cards at even better prices",
             imageURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-%C3%.svg.png",
         },

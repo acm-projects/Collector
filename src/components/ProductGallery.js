@@ -30,7 +30,8 @@ const App= () => {
         </Grid>
         <Grid item xs={0} sm={2} />
       </Grid>
-      
+      <br/>
+      <br/>
       <Grid Item container>
         <Grid item xs={0} sm={2}>
         <Sort/>
