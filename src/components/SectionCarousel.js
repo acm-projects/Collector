@@ -13,9 +13,11 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 3000,
   },
+  
 });
 function Example(props)
 {
+  const classes = useStyles();
     var items = [
         {
             name: "Pokemon Cards",

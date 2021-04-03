@@ -15,6 +15,8 @@ import ForgotPassword from './ForgotPassword'
 import ProductGallery from './ProductGallery'
 import { CssBaseline } from '@material-ui/core';
 import Homepage from './Homepage'
+import Checkout from './Checkout'
+import ItemPage from './ItemPage'
 
 
 function App() { 
@@ -33,6 +35,8 @@ function App() {
            <Route path="/gallery" component={ProductGallery}/>
            <Route path="/forgotpassword" component={ForgotPassword}/>
            <Route path="/profile" component={ProfilePage}/>
+           <Route path="/checkout" component={Checkout}/>
+           <Route path="/item" component={ItemPage}/>
 
          </Switch>
        </AuthProvider>

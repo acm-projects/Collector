@@ -31,7 +31,9 @@ const useStyles = makeStyles({
     backgroundColor: '#333D51',
     color: '#D3AC2B',
     '&$selected': {
-      color: '#D3AC2B'
+      color: '#D3AC2B',
+
+      
   },
     primaryColor:{
         activeTintColor: '#D3AC2B',
