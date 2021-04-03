@@ -15,7 +15,7 @@ import productInfo from "../static/product1Info";
 import productImages from "../static/product1Images";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import ShareIcon from "@material-ui/icons/Share";
-
+import Comments from './Comments';
 import Footer from "./footer";
 import Header from "./Header/header";
 const useStyles = makeStyles({
@@ -101,7 +101,13 @@ function Final() {
         </Grid>
       </Grid>
       <br></br>
-
+      <Grid Item container>
+        <Grid item xs={0} sm={1} />
+        <Grid item xs={12} sm={10}>
+          <Comments />
+        </Grid>
+      </Grid>
+      <br></br>
       <Footer />
     </Grid>
     
