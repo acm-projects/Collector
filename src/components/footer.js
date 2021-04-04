@@ -31,7 +31,9 @@ const useStyles = makeStyles({
     backgroundColor: '#333D51',
     color: '#D3AC2B',
     '&$selected': {
-      color: '#D3AC2B'
+      color: '#D3AC2B',
+
+      
   },
     primaryColor:{
         activeTintColor: '#D3AC2B',
@@ -60,7 +62,7 @@ export default function SimpleBottomNavigation() {
       className={classes.root}
       className={classes.primaryColor}
     >
-      <BottomNavigationAction label="Shop"
+      <BottomNavigationAction label="Home"
       icon={<HomeIcon color="secondary"/>} />
       <BottomNavigationAction label="Forums" icon={<ForumIcon color="secondary"/>} />
       <BottomNavigationAction label="Shop" className={classes.primaryColor} icon={<ShopIcon color="secondary" />} />

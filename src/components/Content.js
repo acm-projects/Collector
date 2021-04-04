@@ -13,7 +13,7 @@ const Content = () => {
           );
         };
     return (
-        <Grid container spacing={7}>
+        <Grid container spacing={4}>
                 {ProductList.map(product => getProductCard(product))}
             
         </Grid>

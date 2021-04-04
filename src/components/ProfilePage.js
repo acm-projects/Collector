@@ -10,7 +10,8 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
 // core components
-import Footer from "./Footer/Footer";
+import Footer from "./footer";
+import Header from './Header/header'
 import Button from "./CustomButtons/Button.js";
 import GridContainer from "../components/Grid/GridContainer";
 import GridItem from "../components/Grid/GridItem.js";
@@ -44,6 +45,7 @@ export default function ProfilePage(props) {
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
   return (
     <div>
+      <Header />
       <Parallax small filter image={require("../assets/img/profile-bg.jpg")} />
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div>
