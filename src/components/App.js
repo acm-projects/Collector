@@ -1,8 +1,3 @@
-/*
-  DISCLAIMER: THE CONTENTS INVOLVING THE BASIC STRUCTURE OF THE LOGIN PAGE BELONG TO "Web Dev Simplified"
-  Tutorial URL: https://www.youtube.com/watch?v=PKwu15ldZ7k
-*/
-
 import React from "react"
 import Signup from "./Signup"
 import {AuthProvider} from "../contexts/AuthContext"
@@ -17,8 +12,7 @@ import { CssBaseline } from '@material-ui/core';
 import Homepage from './Homepage'
 import Checkout from './Checkout'
 import ItemPage from './ItemPage'
-
-
+import CreateListing from './CreateListing'
 
 function App() { 
   return (
@@ -30,6 +24,7 @@ function App() {
        <AuthProvider>
          <Switch>
            <Route exact path="/" component={Homepage}/> 
+           <Route path="/dashboard" component={Dashboard}/> 
            <Route path="/signup" component={Signup}/>
            <Route path="/login" component={Login}/>
            <Route path="/landing" component={LandingPage}/>
@@ -38,7 +33,7 @@ function App() {
            <Route path="/profile" component={ProfilePage}/>
            <Route path="/checkout" component={Checkout}/>
            <Route path="/item" component={ItemPage}/>
-
+           <Route path="/sell" component={CreateListing} />
          </Switch>
        </AuthProvider>
        </Router>

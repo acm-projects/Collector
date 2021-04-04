@@ -17,28 +17,35 @@ export function AuthProvider({children}) {
             .then(
             function(result) {
                 //Upon a successful user creation we store the unique username into the database
-                db.users.add({
-                    displayName: username,
-                    uid: currentUser.uid
-                })
+                addDisplayName(username)
                 //We update the user display name in the user context
             result.user.updateProfile({
                 displayName: username
             })
-        }).catch(error => {   
-            switch(error.code) {
-              case 'auth/email-already-in-use':
-                    alert('Email already in use !')
-                    break;
-            }
-        })
+            }).catch(error => {   
+                switch(error.code) {
+                    case 'auth/email-already-in-use':
+                            alert('Email already in use !')
+                            break;
+                    default:
+                        break;
+                    }
+                })
         } catch(err) {
             alert("Error : ", err);
             return err;
         }
         
     }
-    
+
+    async function addDisplayName(username){
+        await db.users.add({
+            displayName: username,
+            uid: currentUser.uid
+        })
+    }
+
+
     function login(email,password){
         console.log(auth.signInWithEmailAndPassword(email,password));
         return auth.signInWithEmailAndPassword(email,password)
