@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, createMuiTheme, Grid, InputAdornment, TextField, ThemeProvider } from '@material-ui/core';
-import { AccountCircle, LockRounded } from '@material-ui/icons';
+import { AccountCircle } from '@material-ui/icons';
 import Footer from "./footer";
 import Header from './Header/header'
 const theme = createMuiTheme(
@@ -45,24 +45,21 @@ function App() {
             width={200} 
             alt="logo" 
             />
-            <h1>Forgot your Password?</h1>
+            <h1>Forgot your password?</h1>
+            <h2>Enter your email below to reset your password</h2>
           </Grid>
-          <TextField label="Email" margin="normal" InputProps={{ startAdornment: <InputAdornment position="start">
+          <TextField label="Email address" margin="normal" InputProps={{ startAdornment: <InputAdornment position="start">
             <AccountCircle color="secondary" />
           </InputAdornment>}} />
-          
           <div style={{ height: 20}} />
           <Button color="secondary" variant="contained">
-            Submit            
+            Reset Password            
           </Button>
           <div style={{ height: 20}} />
           <Button color="primary" variant="outlined">
-            Back to Login            
+            Not a collector yet?            
           </Button>
-         </div>
-         <div>
-           
-         </div>
+         </div>         
        </Grid>
      </Grid>
      <Footer />
