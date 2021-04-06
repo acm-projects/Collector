@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, createMuiTheme, Grid, InputAdornment, TextField, ThemeProvider } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
-import Footer from "./footer";
-import Header from './Header/header'
+import logo from '../imgs/Logo.png'
+
 const theme = createMuiTheme(
   {
   palette: {
@@ -25,7 +25,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <div>
-      <Header />
      <Grid container style={{ minHeight: '100vh'}}>
        <Grid item xs={12} sm ={6}>
          <img src="https://images.unsplash.com/photo-1520367288098-2794e86c3586?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
@@ -41,12 +40,11 @@ function App() {
          <div />
          <div style={{ display: 'flex', flexDirection: "column", maxWidth: 400, minWidth: 300 }}>
           <Grid container justify="center">
-            <img src="https://files.slack.com/files-pri/T1CH1JVUZ-F01Q70LUMTL/image.png"
+            <img className ="margin-sm" src={logo}
             width={200} 
             alt="logo" 
             />
             <h1>Forgot your password?</h1>
-            <h2>Enter your email below to reset your password</h2>
           </Grid>
           <TextField label="Email address" margin="normal" InputProps={{ startAdornment: <InputAdornment position="start">
             <AccountCircle color="secondary" />
@@ -59,11 +57,13 @@ function App() {
           <Button color="primary" variant="outlined">
             Not a collector yet?            
           </Button>
-         </div>         
+         </div>
+         <div>
+          <div>
+          </div>
+        </div>         
        </Grid>
      </Grid>
-     <Footer />
-
     </div>
     </ThemeProvider>
   );
