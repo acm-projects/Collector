@@ -61,7 +61,6 @@ const App = () => {
       <Grid item>
         <br />
         <br />
-        <Footer />
       </Grid>
     </Grid>
   );
