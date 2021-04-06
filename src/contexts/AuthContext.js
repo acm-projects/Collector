@@ -25,8 +25,8 @@ export function AuthProvider({children}) {
             }).catch(error => {   
                 switch(error.code) {
                     case 'auth/email-already-in-use':
-                            alert('Email already in use !')
-                            break;
+                        alert('Email already in use !')
+                        break;
                     default:
                         break;
                     }

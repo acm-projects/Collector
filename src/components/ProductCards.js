@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 const ProductCard = (props) => {
-  const {avatar, title, price, description, image} = props;
+  const {avatar, title, seller, price, description, image} = props;
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -28,12 +28,15 @@ const ProductCard = (props) => {
             <StarBorder />
           </IconButton>
         }
-        title={title}
-        subheader= {price}
+        title={seller}
+        subheader= {`$${price}`}
       />
             <CardMedia style={{height: "150px"}} image={image}/>
 
       <CardContent>
+        <Typography variant="h5" component="h3">
+          {title}
+        </Typography>
         <Typography variant="body2" component="p">
           {description}
         </Typography>

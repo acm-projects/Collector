@@ -6,7 +6,7 @@ import {auth} from '../firebase'
 
 export default function Dashboard() {
     const[error,setError]=useState("")
-    const currentUser = useAuth()
+    const { currentUser }= useAuth()
     const history =useHistory()
 
     
