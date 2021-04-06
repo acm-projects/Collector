@@ -9,6 +9,8 @@ import LandingPage from "./LandingPage"
 import ProfilePage from './ProfilePage'
 import ForgotPassword from './ForgotPassword'
 import ProductGallery from './ProductGallery'
+import Checkout from './Checkout'
+import ItemPage from './ItemPage'
 import { CssBaseline } from '@material-ui/core';
 import Homepage from './Homepage'
 import CreateListing from './CreateListing'
@@ -29,6 +31,8 @@ function App() {
            <Route path="/landing" component={LandingPage}/>
            <Route path="/gallery" component={ProductGallery}/>
            <Route path="/forgotpassword" component={ForgotPassword}/>
+           <Route path="/item:id" component={ItemPage}/>
+           <Route path="/checkout" component={Checkout}/>
            <PrivateRoute path="/profile" component={ProfilePage}/>
            <PrivateRoute path="/sell" component={CreateListing} />
          </Switch>
