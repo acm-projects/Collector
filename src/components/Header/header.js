@@ -15,6 +15,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Dropdown from './dropdown';
+import AddIcon from '@material-ui/icons/Add';
 import {createMuiTheme, ThemeProvider} from '@material-ui/core'
 
 const theme = createMuiTheme(
@@ -221,6 +222,11 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+          <IconButton  className={classes.tertiaryColor}>
+              
+                <AddIcon />
+              
+            </IconButton>
             <IconButton aria-label="show 4 new items" className={classes.tertiaryColor}>
               <Badge badgeContent={4} color="secondary">
                 <ShoppingCartIcon />

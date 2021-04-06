@@ -13,7 +13,9 @@ const useStyles = makeStyles({
     maxWidth: 685,
     minHeight: 350,
   },
-  
+  button:{
+    backgroundColor:'#d3ac2b'
+}
 });
 
 const ProductCard = (props) => {
@@ -31,7 +33,7 @@ const ProductCard = (props) => {
         title={seller}
         subheader= {`$${price}`}
       />
-            <CardMedia style={{height: "150px"}} image={image}/>
+            <CardMedia style={{height: "150px", width:'auto'}} image={image}/>
 
       <CardContent>
         <Typography variant="h5" component="h3">
@@ -42,7 +44,7 @@ const ProductCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Add To Cart</Button>
+        <Button className={classes.button}size="small">Add To Cart</Button>
       </CardActions>
     </Card>
   );
