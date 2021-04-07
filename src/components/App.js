@@ -14,6 +14,7 @@ import ItemPage from './ItemPage'
 import { CssBaseline } from '@material-ui/core';
 import Homepage from './Homepage'
 import CreateListing from './CreateListing'
+import Cart from './Cart'
 
 function App() { 
   return (
@@ -33,8 +34,11 @@ function App() {
            <Route path="/forgotpassword" component={ForgotPassword}/>
            <Route path="/item:id" component={ItemPage}/>
            <Route path="/checkout" component={Checkout}/>
+           <Route path="/cart" component={Cart}/>
+
            <PrivateRoute path="/profile" component={ProfilePage}/>
            <PrivateRoute path="/sell" component={CreateListing} />
+           
          </Switch>
        </AuthProvider>
        </Router>
