@@ -56,11 +56,15 @@ const useStyles = makeStyles((theme) => ({
   
   search: {
     position: 'relative',
+    headerTitleAlign: 'center',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
+    alignItems:'center',
+    justifyContent: 'center',
+
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
@@ -72,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
   searchIcon: {
     padding: theme.spacing(0, 2),
     height: '100%',
+    
     position: 'absolute',
     pointerEvents: 'none',
     display: 'flex',
@@ -80,11 +85,14 @@ const useStyles = makeStyles((theme) => ({
   },
   inputRoot: {
     color: 'secondary',
+    
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    alignItems: 'center',
+    justifyContent: 'center',
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
@@ -102,6 +110,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
+    
   },
 }));
 
@@ -205,8 +214,9 @@ export default function PrimarySearchAppBar() {
           <Typography className={classes.title} variant="h6" noWrap className={classes.tertiaryColor}>
             Collector
           </Typography>
-          <Dropdown className={classes.dropdown} variant="h6" noWrap/>
-          <div className={classes.search}>
+          <Dropdown justifyContent='center'className={classes.dropdown}  variant="h6" noWrap/>
+          <div className={classes.search}
+          >
             <div className={classes.searchIcon}>
               <SearchIcon className={classes.tertiaryColor}/>
             </div>

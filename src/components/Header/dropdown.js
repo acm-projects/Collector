@@ -11,8 +11,9 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    position:'relative',
-    marginLeft: theme.spacing(15),
+    display: 'flex',
+    justifyContent: 'center',
+    marginLeft: '35em',
     marginRight: theme.spacing(-1),
     marginTop: theme.spacing(-.7),
     color:'fff',
@@ -87,7 +88,7 @@ export default function ControlledOpenSelect() {
           </MenuItem>
           <MenuItem className={classes.select}value={1}>Forums</MenuItem>
           <MenuItem className={classes.select}value={2}>Products</MenuItem>
-          <MenuItem className={classes.select}value={3}>Thirty</MenuItem>
+
         </Select>
       </FormControl>
     </div>
