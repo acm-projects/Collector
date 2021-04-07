@@ -4,9 +4,29 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+
+const theme = createMuiTheme(
+  {
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
 
 export default function PaymentForm() {
   return (
+    <ThemeProvider theme={theme}>
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Payment method
@@ -45,5 +65,6 @@ export default function PaymentForm() {
         </Grid>
       </Grid>
     </React.Fragment>
+    </ThemeProvider>
   );
 }

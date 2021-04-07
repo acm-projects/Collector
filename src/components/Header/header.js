@@ -15,7 +15,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Dropdown from './dropdown';
-import {createMuiTheme, ThemeProvider} from '@material-ui/core'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 
 const theme = createMuiTheme(
   {
@@ -35,6 +35,7 @@ const theme = createMuiTheme(
     }
   },
 });
+
 const useStyles = makeStyles((theme) => ({
   
   grow: {

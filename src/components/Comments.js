@@ -1,7 +1,27 @@
 import React from 'react'
 import { Button, Comment, Form, Header } from 'semantic-ui-react'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+
+const theme = createMuiTheme(
+  {
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
 
 const CommentExampleThreaded = () => (
+  <ThemeProvider theme={theme}>
   <Comment.Group threaded>
     <Header as='h3' dividing>
       Comments
@@ -72,6 +92,7 @@ const CommentExampleThreaded = () => (
       <Button content='Add Reply' labelPosition='left' icon='edit' primary />
     </Form>
   </Comment.Group>
+  </ThemeProvider>
 )
 
 export default CommentExampleThreaded

@@ -5,6 +5,25 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+
+const theme = createMuiTheme(
+  {
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
 
 const products = [
   { name: 'Product 1', desc: 'A nice thing', price: '$9.99' },
@@ -37,6 +56,7 @@ export default function Review() {
   const classes = useStyles();
 
   return (
+    <ThemeProvider theme={theme}>
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Order summary
@@ -82,5 +102,6 @@ export default function Review() {
         </Grid>
       </Grid>
     </React.Fragment>
+    </ThemeProvider>
   );
 }
