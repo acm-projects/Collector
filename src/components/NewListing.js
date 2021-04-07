@@ -27,13 +27,18 @@ const useStyles = makeStyles({
   },
   button:{
     backgroundColor:'#d3ac2b'
-}
+},
+  photo:{
+    minHeight:'50px',
+  },
 });
 
 export default function AddressForm() {
   const classes = useStyles();
+  
 
   return (
+    
     <React.Fragment>
       <Header />
       <br></br>
@@ -77,6 +82,22 @@ export default function AddressForm() {
             variant="filled"
           />
         </Grid>
+
+        <Grid item xs={0} sm={4} />
+        <Grid item xs={0} sm={1} />
+        <Grid item xs={7}>
+        <Typography >
+            Upload an Image
+          </Typography>
+          <TextField
+            required
+            id="Uploadphoto"
+            name="file"
+            variant="filled"
+            type="file"
+          />
+        </Grid>
+
         <Grid item xs={0} sm={4} />
         <Grid item xs={0} sm={1} />
         <Grid item xs={7}>
