@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Avatar, CardHeader, IconButton, CardMedia } from '@material-ui/core';
 import {StarBorder} from '@material-ui/icons';
+import {Link,useHistory} from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -22,6 +23,7 @@ const ProductCard = (props) => {
   const {avatar, title, seller, price, description, image} = props;
   const classes = useStyles();
   return (
+    
     <Card className={classes.root}>
         <CardHeader
         avatar={ <Avatar src={avatar} />}
@@ -33,8 +35,9 @@ const ProductCard = (props) => {
         title={seller}
         subheader= {`$${price}`}
       />
-            <CardMedia style={{height: "150px", width:'auto'}} image={image}/>
-
+      <Link to="/item:id">
+            <CardMedia style={{height: "175px", width:'auto'}} image={image}/>
+      </Link>
       <CardContent>
         <Typography variant="h5" component="h3">
           {title}

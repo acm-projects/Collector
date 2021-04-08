@@ -32,10 +32,9 @@ function App() {
            <Route path="/landing" component={LandingPage}/>
            <Route path="/gallery" component={ProductGallery}/>
            <Route path="/forgotpassword" component={ForgotPassword}/>
-           <Route path="/item:id" component={ItemPage}/>
+           <Route path="/item/:id" component={ItemPage}/>
            <Route path="/checkout" component={Checkout}/>
            <Route path="/cart" component={Cart}/>
-
            <PrivateRoute path="/profile" component={ProfilePage}/>
            <PrivateRoute path="/sell" component={CreateListing} />
            

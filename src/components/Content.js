@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCards';
 import {Grid} from '@material-ui/core';
-import ProductList from '../static/ProductConstants'
+import ItemPage from './ItemPage'
 import { db } from '../firebase';
-
-
+import { useDispatch} from 'react-redux'
+import {saveItems} from '../redux/actions'
 
 const Content = () => {
     const [listings, setListings] = useState([]);
-    useEffect(() => {
-      db.listings.onSnapshot(snapshot => {
+    const dispatch = useDispatch()
+    useEffect(async () => {
+      await db.listings.onSnapshot(snapshot => {
           setListings(snapshot.docs.map(doc => ({
             id: doc.id,
             product: doc.data()
         })))
       })
+      dispatch(saveItems(listings))
     }, []);
     const getProductCard =  (id, product) => {
         return (
             <Grid item xs={12} sm={3}>
-              <ProductCard key={id} {...product} />
+              <ProductCard key={id} itemId={id} {...product} />
             </Grid>
           );
         };

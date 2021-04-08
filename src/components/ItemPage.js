@@ -18,6 +18,8 @@ import ShareIcon from "@material-ui/icons/Share";
 import Comments from './Comments';
 import Footer from "./footer";
 import Header from "./Header/header";
+import { db } from '../firebase';
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 3000,
@@ -38,6 +40,7 @@ const useStyles = makeStyles({
     backgroundColor:'#d3ac2b'
 }
 });
+
 function Pictures(props) {
   return (
     <Carousel>
@@ -48,8 +51,8 @@ function Pictures(props) {
   );
 }
 
-function Final() {
-  const product = productInfo[0];
+function Final(props) {
+  const product = {...props};
   const classes = useStyles();
 
   return (
@@ -66,8 +69,6 @@ function Final() {
           <Typography className={classes.itemNumber}>
             {"Item Number: "}
             {product.itemNumber}
-
-            
           </Typography>
         </Grid>
         <IconButton className={classes.icons}>

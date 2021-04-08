@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 export default function CheckboxesGroup() {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    under20: true,
+    under20: false,
     twentyTo50: false,
     fiftyTo100: false,
     over100:false,

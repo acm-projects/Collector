@@ -87,7 +87,6 @@ export default function ControlledOpenSelect() {
           </MenuItem>
           <MenuItem className={classes.select}value={1}>Forums</MenuItem>
           <MenuItem className={classes.select}value={2}>Products</MenuItem>
-          <MenuItem className={classes.select}value={3}>Thirty</MenuItem>
         </Select>
       </FormControl>
     </div>
