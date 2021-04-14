@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 });
 
 const ProductCard = (props) => {
-  const {avatar, title, seller, price, description, image} = props;
+  const {avatar, title, seller, price, description, image, itemId} = props;
   const classes = useStyles();
   return (
     
@@ -35,7 +35,7 @@ const ProductCard = (props) => {
         title={seller}
         subheader= {`$${price}`}
       />
-      <Link to="/item:id">
+      <Link to={`/item/${itemId}`}>
             <CardMedia style={{height: "175px", width:'auto'}} image={image}/>
       </Link>
       <CardContent>

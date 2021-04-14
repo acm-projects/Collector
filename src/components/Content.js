@@ -9,14 +9,19 @@ import {saveItems} from '../redux/actions'
 const Content = () => {
     const [listings, setListings] = useState([]);
     const dispatch = useDispatch()
-    useEffect(async () => {
-      await db.listings.onSnapshot(snapshot => {
+    useEffect(() => {
+      
+      const fetchData = async() => {
+        db.listings.onSnapshot(snapshot => {
           setListings(snapshot.docs.map(doc => ({
             id: doc.id,
             product: doc.data()
         })))
+        console.log(listings)
+        dispatch(saveItems(listings))
       })
-      dispatch(saveItems(listings))
+      }
+      fetchData();
     }, []);
     const getProductCard =  (id, product) => {
         return (

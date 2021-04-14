@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Carousel from "react-material-ui-carousel";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -51,9 +51,15 @@ function Pictures(props) {
   );
 }
 
+
 function Final(props) {
-  const product = {...props};
+  
   const classes = useStyles();
+  const product = {...props};
+
+  useEffect( async () => {
+    
+  }, []);
 
   return (
     <Grid container direction="column">
