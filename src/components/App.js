@@ -37,10 +37,9 @@ function App() {
            <Route path="/forgotpassword" component={ForgotPassword}/>
            <Route path="/item:id" component={ItemPage}/>
            <Route path="/checkout" component={Checkout}/>
-           <Route path="/cart" component={Cart}/>
-           <Route path="/create" component={NewListing}/>
-           <Route path="/profile" component={ProfilePage}/>
-           <Route path="/sell" component={CreateListing} />
+           <PrivateRoute path="/cart" component={Cart}/>
+           <PrivateRoute path="/sell" component={NewListing}/>
+           <PrivateRoute path="/profile" component={ProfilePage}/>
            
          </Switch>
        </AuthProvider>
