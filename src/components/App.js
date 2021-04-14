@@ -16,7 +16,7 @@ import Homepage from './Homepage'
 import CreateListing from './CreateListing'
 import Cart from './Cart'
 import NewListing from './NewListing'
-
+import NewSignUp from './NewSignUp'
 function App() { 
   return (
 
@@ -26,9 +26,11 @@ function App() {
        <Router>
        <AuthProvider>
          <Switch>
-           <Route exact path="/" component={Homepage}/> 
+           <Route exact path="/" component={ProductGallery}/> 
            <PrivateRoute path="/dashboard" component={Dashboard}/> 
            <Route path="/signup" component={Signup}/>
+           <Route path="/newsignup" component={NewSignUp}/>
+
            <Route path="/login" component={Login}/>
            <Route path="/landing" component={LandingPage}/>
            <Route path="/gallery" component={ProductGallery}/>
@@ -37,7 +39,7 @@ function App() {
            <Route path="/checkout" component={Checkout}/>
            <Route path="/cart" component={Cart}/>
            <Route path="/create" component={NewListing}/>
-           <PrivateRoute path="/profile" component={ProfilePage}/>
+           <Route path="/profile" component={ProfilePage}/>
            <Route path="/sell" component={CreateListing} />
            
          </Switch>
