@@ -12,8 +12,6 @@ import ProductGallery from './ProductGallery'
 import Checkout from './Checkout'
 import ItemPage from './ItemPage'
 import { CssBaseline } from '@material-ui/core';
-import Homepage from './Homepage'
-import CreateListing from './CreateListing'
 import Cart from './Cart'
 import NewListing from './NewListing'
 import NewSignUp from './NewSignUp'
