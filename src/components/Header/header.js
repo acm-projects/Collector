@@ -31,7 +31,7 @@ import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import InfoIcon from '@material-ui/icons/Info';
-
+import {Link} from 'react-router-dom'
 const drawerWidth = 240;
 
 const theme = createMuiTheme(
@@ -319,9 +319,9 @@ export default function PrimarySearchAppBar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
           <IconButton  className={classes.tertiaryColor}>
-              
-                <AddIcon />
-              
+              <Link to="/sell" style={{ textDecoration: 'none' }} >
+                <AddIcon color="secondary"/>
+              </Link>
             </IconButton>
             <IconButton aria-label="show 4 new items" className={classes.tertiaryColor}>
               <Badge badgeContent={4} color="secondary">
