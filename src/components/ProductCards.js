@@ -15,6 +15,11 @@ const useStyles = makeStyles({
   },
   button:{
     backgroundColor:'#d3ac2b'
+},
+image:{
+  transform: "none",
+  position: "relative",
+  zIndex: "3"
 }
 });
 
@@ -33,7 +38,7 @@ const ProductCard = (props) => {
         title={seller}
         subheader= {`$${price}`}
       />
-            <CardMedia style={{height: "150px", width:'auto'}} image={image}/>
+            <CardMedia style={{height: "180px", width:'auto'}} image={image} className={classes.image}/>
 
       <CardContent>
         <Typography variant="h5" component="h3">
