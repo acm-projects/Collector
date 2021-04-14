@@ -53,6 +53,9 @@ const useStyles = makeStyles({
   icons: {
     justifyContent: "right",
   },
+  button:{
+    backgroundColor:'#d3ac2b'
+}
 });
 function Pictures(props) {
   return (
@@ -190,7 +193,7 @@ function AddToCartCard({}) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button>Add to Cart</Button>
+        <Button className={classes.button}> Add to Cart</Button>
       </CardActions>
     </Card>
     </ThemeProvider>
@@ -250,7 +253,7 @@ function SellerCard ({}) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">See other Listings</Button>
+          <Button className={classes.button}size="small">See other Listings</Button>
         </CardActions>
       </Card>
       </ThemeProvider>

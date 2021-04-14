@@ -99,7 +99,7 @@ export default function CreateListing() {
                     .child(image.name)
                     .getDownloadURL()
                     .then(urlImg => {
-                        setUrl(urlImg)
+                        setTimeout(setUrl(urlImg),2000)
                         console.log(urlImg)
                     })
             }

@@ -223,6 +223,7 @@ export default function ProfilePage(props) {
           </div>
         </div>
       </div>
+      <br></br><br></br>
       <Footer />
     </div>
     </ThemeProvider>
