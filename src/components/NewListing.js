@@ -40,6 +40,7 @@ const useStyles = makeStyles({
 });
 
 export default function AddressForm() {
+
     const classes = useStyles();
     const [avatarRef,setAvatarRef]=React.useState("https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg")
     const [itemNameRef,setItemNameRef]=React.useState("")
@@ -159,16 +160,6 @@ export default function AddressForm() {
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
         "state_changed",
-        snapshot => {
-            const progress = Math.round(
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            );
-            setProgress(progress); 
-        },
-        error => {
-            console.log(error);
-            alert(error);
-        },
         () => {
             storage
                 .ref("images")
@@ -177,40 +168,52 @@ export default function AddressForm() {
                 .then(urlImg => {
                     setUrl(urlImg)
                     console.log(urlImg)
+                    addListing(urlImg)
                 })
         }
     )
 }
+
   function handleSubmit(e){
     e.preventDefault()
     try{
-        addListing()
+        if(url=="")
+        {
+          setError("Image has not finished uploading, hit submit again")
+        }
+        else
+        {
+          addListing()
+        }
     }catch{
         setError('Failed to list item')
     }
 }
 
+  console.log(currentUser.uid)
   const parsedPrice=parseFloat(itemPriceRef)
-    async function addListing(){
-       await db.listings.add({
-            avatar:avatarRef,
-            category: itemCategoryRef,
-            condition: itemConditionRef,
-            date: date,
-            description: itemDescriptionRef,
-            image: url,
-            price: parsedPrice,
-            seller: currentUser.displayName,
-            subtitle:itemSubtitleRef,
-            shipping: itemShippingRef,
-            title: itemNameRef,
-            uid: currentUser.uid
-            
-        })
+    async function addListing(urlImg){
+        await db.listings.add({
+          avatar:avatarRef,
+          category: itemCategoryRef,
+          condition: itemConditionRef,
+          date: date,
+          description: itemDescriptionRef,
+          image: urlImg,
+          price: parsedPrice,
+          seller: currentUser.displayName,
+          subtitle:itemSubtitleRef,
+          shipping: itemShippingRef,
+          title: itemNameRef,
+          uid: currentUser.uid
+      })
+      setTimeout(history.push("/"),3000)
+      
     }
 
   return (
     <Form onSubmit={handleSubmit}>
+      {error && <Alert variant="danger">{error}</Alert>}
     <React.Fragment>
       <Header />
       <br></br>
@@ -407,11 +410,11 @@ export default function AddressForm() {
         <Grid item xs={0} sm={4} />
         <Grid item xs={0} sm={1} />
         <Grid item xs={7}>
-        <Button className={classes.button} size="large" type="submit" onClick={handleUpload}>Sell Item!</Button>
+        <Button className={classes.button} size="large" onClick={handleUpload}>Sell Item!</Button>
         </Grid>
         <Grid item xs={0} sm={4} />
 
-        
+  
       </Grid>
     </React.Fragment>
     </Form>
