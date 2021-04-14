@@ -46,7 +46,7 @@ export default function Login() {
             setError("")
             setLoading(true)
             await login(emailRef,passwordRef)
-            history.push("/dashboard")
+            history.push("/")
         } catch (err) {
             console.log(err)
             switch(err.code) {
