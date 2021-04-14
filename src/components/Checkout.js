@@ -15,9 +15,30 @@ import PaymentForm from './PaymentForm';
 import Review from './Review';
 import Header from './Header/header'
 import Footer from './footer'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+
+const theme = createMuiTheme(
+  {
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
+
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+  <ThemeProvider theme={theme}>
+    <Typography variant="body2" color="secondary.contrastText" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
         Your Website
@@ -25,6 +46,7 @@ function Copyright() {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
+    </ThemeProvider>
   );
 }
 
@@ -93,6 +115,7 @@ export default function Checkout() {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <React.Fragment>
       <CssBaseline />
       <Header />
@@ -146,6 +169,6 @@ export default function Checkout() {
         
       </main>
     </React.Fragment>
-    
+    </ThemeProvider>
   );
 }

@@ -52,6 +52,7 @@ const theme = createMuiTheme(
     }
   },
 });
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
