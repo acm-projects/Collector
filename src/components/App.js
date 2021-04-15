@@ -23,49 +23,10 @@ import {createStore, combineReducers, compose } from 'redux'
 import { ReactReduxFirebaseProvider, firebaseReducer } from 'react-redux-firebase'
 import { createFirestoreInstance, firestoreReducer } from 'redux-firestore'
 
-const fbConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID 
-}
 
-// react-redux-firebase config
-const rrfConfig = {
-  userProfile: 'users'
-  // useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
-}
-
-// Initialize firebase instance
-firebase.initializeApp(fbConfig)
-
-// Initialize other services on firebase instance
-firebase.firestore() // <- needed if using firestore
-
-// Add firebase to reducers
-const rootReducer = combineReducers({
-  firebase: firebaseReducer,
-  firestore: firestoreReducer // <- needed if using firestore
-})
-
-// Create store with reducers and initial state
-const initialState = {}
-const store = createStore(rootReducer, initialState)
-
-const rrfProps = {
-  firebase,
-  config: rrfConfig,
-  dispatch: store.dispatch,
-  createFirestoreInstance // <- needed if using firestore
-}
 
 function App() { 
   return (
-    <Provider store={store}>
-      <ReactReduxFirebaseProvider {...rrfProps}>
      <div>
      <CssBaseline />
        <Router>
@@ -87,8 +48,6 @@ function App() {
        </AuthProvider>
        </Router>
       </div>
-      </ReactReduxFirebaseProvider>
-    </Provider>
   )
 }
 

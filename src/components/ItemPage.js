@@ -19,6 +19,7 @@ import Comments from './Comments';
 import Footer from "./footer";
 import Header from "./Header/header";
 import { db } from '../firebase';
+import { wait } from "@testing-library/dom";
 
 const useStyles = makeStyles({
   root: {
@@ -42,23 +43,25 @@ const useStyles = makeStyles({
 });
 
 function Pictures(props) {
+  console.log(props.productImage)
   return (
     <Carousel>
-      {productImages.map((item, i) => (
-        <Images key={i} item={item} />
-      ))}
+        <Images item={props.productImage} />
     </Carousel>
   );
 }
 
 
+
 function Final(props) {
   
   const classes = useStyles();
-  const product = {...props};
+  const [product, setProduct] = useState({});
 
   useEffect( async () => {
-    
+    db.listings.doc(props.match.params.id).get().then((doc) => {
+      setProduct(doc.data());
+    });
   }, []);
 
   return (
@@ -88,7 +91,7 @@ function Final(props) {
       <Grid Item container>
         <Grid item xs={0} sm={1} />
         <Grid item xs={12} sm={5}>
-          <Pictures />
+          <Pictures productImage={product.image} />
         </Grid>
         <Grid item xs={0} sm={1} />
         <Grid item xs={12} sm={4}>
@@ -133,7 +136,7 @@ function Images(props) {
           component="img"
           alt="Contemplative Reptile"
           height="340"
-          image={props.item.imageURL}
+          image={props.item}
           title="Contemplative Reptile"
         />
       </CardActionArea>

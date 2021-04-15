@@ -3,14 +3,12 @@ import ProductCard from './ProductCards';
 import {Grid} from '@material-ui/core';
 import ItemPage from './ItemPage'
 import { db } from '../firebase';
-import { useDispatch} from 'react-redux'
-import {saveItems} from '../redux/actions'
+
 
 const Content = () => {
     const [listings, setListings] = useState([]);
-    const dispatch = useDispatch()
+    
     useEffect(() => {
-      
       const fetchData = async() => {
         db.listings.onSnapshot(snapshot => {
           setListings(snapshot.docs.map(doc => ({
@@ -18,7 +16,6 @@ const Content = () => {
             product: doc.data()
         })))
         console.log(listings)
-        dispatch(saveItems(listings))
       })
       }
       fetchData();
