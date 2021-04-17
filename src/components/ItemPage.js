@@ -95,7 +95,7 @@ function Final(props) {
         </Grid>
         <Grid item xs={0} sm={1} />
         <Grid item xs={12} sm={4}>
-          <AddToCartCard />
+          <AddToCartCard title={product.title} category={product.category} shipping={product.shipping} condition={product.condition} returns={product.returns}/>
         </Grid>
         <Grid item xs={0} sm={2} />
       </Grid>
@@ -103,14 +103,14 @@ function Final(props) {
       <Grid Item container>
         <Grid item xs={0} sm={1} />
         <Grid item xs={12} sm={10}>
-          <DescriptionCard />
+          <DescriptionCard description={product.description}/>
         </Grid>
       </Grid>
         <br></br>
       <Grid Item container>
         <Grid item xs={0} sm={1} />
         <Grid item xs={12} sm={10}>
-          <SellerCard />
+          <SellerCard seller={product.seller}/>
         </Grid>
       </Grid>
       <br></br>
@@ -144,7 +144,7 @@ function Images(props) {
   );
 }
 
-function AddToCartCard({}) {
+function AddToCartCard(props) {
   const classes = useStyles();
   const CardContents = productInfo[0];
   return (
@@ -157,7 +157,7 @@ function AddToCartCard({}) {
             component="h1"
             className={classes.title}
           >
-            {CardContents.title}
+            {props.title}
           </Typography>
           <Typography
             variant="body2"
@@ -166,16 +166,16 @@ function AddToCartCard({}) {
             className={classes.desc}
           >
               {"Category: "}
-            {CardContents.category}
+            {props.category}
             <br></br><br></br>
               {"Shipping: "}
-            {CardContents.shipping}
+            {props.shipping}
             <br></br><br></br>
             {"Condition: "}
-            {CardContents.condition}
+            {props.condition}
             <br></br><br></br>
             {"Returns: "}
-            {CardContents.returns}
+            {props.returns}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -186,9 +186,10 @@ function AddToCartCard({}) {
   );
 }
 
-function DescriptionCard({}) {
+function DescriptionCard(props) {
   const classes = useStyles();
   const CardContents = productInfo[0];
+  
   return (
     <Card className={classes.root}>
         <CardContent>
@@ -206,7 +207,7 @@ function DescriptionCard({}) {
             component="p"
             className={classes.desc}
           >
-            {CardContents.description}
+            {props.description}
           </Typography>
         </CardContent>
       
@@ -214,7 +215,7 @@ function DescriptionCard({}) {
   );
 }
 
-function SellerCard ({}) {
+function SellerCard (props) {
     const {avatar, sellerName, sellerRating, sellerTime} = productInfo[0];
     const classes = useStyles();
     return (
@@ -222,7 +223,7 @@ function SellerCard ({}) {
           <CardHeader
           avatar={ <Avatar src={avatar} />}
           
-          title={sellerName}
+          title={props.seller}
           subheader= {sellerRating}
           
         />
