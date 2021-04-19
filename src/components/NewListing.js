@@ -201,6 +201,7 @@ export default function AddressForm() {
           description: itemDescriptionRef,
           image: urlImg,
           price: parsedPrice,
+          returns:itemReturnsRef,
           seller: currentUser.displayName,
           subtitle:itemSubtitleRef,
           shipping: itemShippingRef,
