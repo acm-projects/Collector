@@ -32,20 +32,6 @@ const theme = createMuiTheme(
   },
 });
 
-function Copyright() {
-  return (
-  <ThemeProvider theme={theme}>
-    <Typography variant="body2" color="secondary.contrastText" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-    </ThemeProvider>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
