@@ -95,10 +95,8 @@ function Final(props) {
         <Grid item xs={12} sm={9}>
           <br />
           <Typography className={classes.title}>{product.title}</Typography>
-          <Typography className={classes.itemNumber}>
-            {"Item Number: "}
-            {product.itemNumber}
-          </Typography>
+          
+          <br></br>
         </Grid>
         <IconButton className={classes.icons}>
           <StarBorderIcon />
@@ -110,29 +108,21 @@ function Final(props) {
 
       <Grid Item container>
         <Grid item xs={0} sm={1} />
-        <Grid item xs={12} sm={5}>
+        <Grid item xs={12} sm={4}>
           <Pictures productImage={product.image} />
         </Grid>
         <Grid item xs={0} sm={1} />
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={5}>
           <AddToCartCard title={product.title} category={product.category} shipping={product.shipping} condition={product.condition} returns={product.returns}/>
+          <br></br><br></br>
+          <DescriptionCard description={product.description}/>
+          <br></br><br></br>
+          <SellerCard seller={product.seller}/>
         </Grid>
         <Grid item xs={0} sm={2} />
       </Grid>
 
-      <Grid Item container>
-        <Grid item xs={0} sm={1} />
-        <Grid item xs={12} sm={10}>
-          <DescriptionCard description={product.description}/>
-        </Grid>
-      </Grid>
-        <br></br>
-      <Grid Item container>
-        <Grid item xs={0} sm={1} />
-        <Grid item xs={12} sm={10}>
-          <SellerCard seller={product.seller}/>
-        </Grid>
-      </Grid>
+      
       <br></br>
       <Grid Item container>
         <Grid item xs={0} sm={1} />
@@ -156,7 +146,7 @@ function Images(props) {
         <CardMedia
           component="img"
           alt="Contemplative Reptile"
-          height="340"
+          height="840"
           image={props.item}
           title="Contemplative Reptile"
         />
@@ -175,11 +165,11 @@ function AddToCartCard(props) {
         <CardContent>
           <Typography
             gutterBottom
-            variant="h5"
+            variant="body1"
             component="h1"
             className={classes.title}
           >
-            {props.title}
+            {"Item Info"}
           </Typography>
           <Typography
             variant="body2"
