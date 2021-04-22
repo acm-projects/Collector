@@ -24,6 +24,8 @@ export default function CheckboxesGroup() {
     musicalInstuments: false,
     sportsCards: false,
     games: false,
+    magicTheGathering: false,
+    nft: false,
     other: false,
   });
 
@@ -31,8 +33,8 @@ export default function CheckboxesGroup() {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
-  const { yugioh, pokemon, musicalInstuments,sportsCards,games,other } = state;
-  const error = [yugioh, pokemon, musicalInstuments,sportsCards,games,other].filter((v) => v).length !== 2;
+  const { yugioh, pokemon, musicalInstuments,sportsCards,games,magicTheGathering,nft,other } = state;
+  const error = [yugioh, pokemon, musicalInstuments,sportsCards,games,magicTheGathering,nft,other].filter((v) => v).length !== 2;
 
   return (
     <div className={classes.root}>
@@ -58,6 +60,14 @@ export default function CheckboxesGroup() {
           <FormControlLabel
             control={<Checkbox checked={games} onChange={handleChange} name="games" />}
             label="Games"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={magicTheGathering} onChange={handleChange} name="magicTheGathering" />}
+            label="Magic the Gathering"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={nft} onChange={handleChange} name="nft" />}
+            label="NFT"
           />
           <FormControlLabel
             control={<Checkbox checked={other} onChange={handleChange} name="other" />}

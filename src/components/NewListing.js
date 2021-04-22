@@ -100,8 +100,11 @@ export default function AddressForm() {
 
       case 5: setItemCategoryRef("Games")
               break
-              
-      case 6: setItemCategoryRef("Other")
+      case 6: setItemCategoryRef("Magic the Gathering")
+              break
+      case 7: setItemCategoryRef("nft")
+              break
+      case 8: setItemCategoryRef("Other")
               break
     }
   }
@@ -344,7 +347,9 @@ export default function AddressForm() {
             <MenuItem value={3}>Vinyl</MenuItem>
             <MenuItem value={4}>Sports Cards</MenuItem>
             <MenuItem value={5}>Games</MenuItem>
-            <MenuItem value={6}>Other</MenuItem>
+            <MenuItem value={6}>Magic the Gathering</MenuItem>
+            <MenuItem value={7}>NFT</MenuItem>
+            <MenuItem value={8}>Other</MenuItem>
            
               </Select>
             </FormControl>

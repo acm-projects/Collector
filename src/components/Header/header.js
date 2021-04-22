@@ -319,13 +319,19 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+          <IconButton >
+              <Link to="/" style={{ textDecoration: 'none' }} >
+                <HomeIcon color="secondary"/>
+              </Link>
+              
+            </IconButton>
           <IconButton  className={classes.tertiaryColor}>
               <Link to="/sell" style={{ textDecoration: 'none' }} >
                 <AddIcon color="secondary"/>
               </Link>
             </IconButton>
             <IconButton aria-label="show 4 new items" className={classes.tertiaryColor}>
-              <Badge badgeContent={4} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
