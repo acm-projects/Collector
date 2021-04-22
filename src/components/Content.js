@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCards';
 import {Grid} from '@material-ui/core';
-import ProductList from '../static/ProductConstants'
 import { db } from '../firebase';
-
 
 
 const Content = () => {
     const [listings, setListings] = useState([]);
+    
     useEffect(() => {
-      db.listings.onSnapshot(snapshot => {
+      const fetchData = async() => {
+        db.listings.onSnapshot(snapshot => {
           setListings(snapshot.docs.map(doc => ({
             id: doc.id,
             product: doc.data()
         })))
       })
+      }
+      fetchData();
     }, []);
     const getProductCard =  (id, product) => {
         return (
             <Grid item xs={12} sm={3}>
-              <ProductCard key={id} {...product} />
+              <ProductCard key={id} itemId={id} {...product} />
             </Grid>
           );
         };

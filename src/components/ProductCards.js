@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Avatar, CardHeader, IconButton, CardMedia, createMuiTheme, ThemeProvider } from '@material-ui/core';
 import {StarBorder} from '@material-ui/icons';
+import {Link,useHistory} from "react-router-dom";
 
 const theme = createMuiTheme(
   {
@@ -42,7 +43,7 @@ image:{
 });
 
 const ProductCard = (props) => {
-  const {avatar, title, seller, price, description, image} = props;
+  const {avatar, title, seller, price, description, image, itemId} = props;
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
@@ -57,8 +58,9 @@ const ProductCard = (props) => {
         title={seller}
         subheader= {`$${price}`}
       />
+      <Link to={`/item/${itemId}`}>
             <CardMedia style={{height: "420px", width:'auto', justify:'center'}} image={image} className={classes.image}/>
-
+      </Link>
       <CardContent>
         <Typography variant="h5" component="h3">
           {title}
