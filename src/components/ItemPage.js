@@ -10,16 +10,13 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 import { Avatar, CardHeader, IconButton } from "@material-ui/core";
-import { StarBorder } from "@material-ui/icons";
 import productInfo from "../static/product1Info";
-import productImages from "../static/product1Images";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import ShareIcon from "@material-ui/icons/Share";
 import Comments from './Comments';
 import Footer from "./footer";
 import Header from "./Header/header";
 import { db } from '../firebase';
-import { wait } from "@testing-library/dom";
 
 const useStyles = makeStyles({
   root: {
@@ -58,10 +55,13 @@ function Final(props) {
   const classes = useStyles();
   const [product, setProduct] = useState({});
 
-  useEffect( async () => {
-    db.listings.doc(props.match.params.id).get().then((doc) => {
-      setProduct(doc.data());
-    });
+  useEffect(() => {
+    async function fetchData() {
+      db.listings.doc(props.match.params.id).get().then((doc) => {
+        setProduct(doc.data());
+      });
+    }
+    fetchData();
   }, []);
 
   return (
@@ -146,7 +146,6 @@ function Images(props) {
 
 function AddToCartCard(props) {
   const classes = useStyles();
-  const CardContents = productInfo[0];
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -188,7 +187,6 @@ function AddToCartCard(props) {
 
 function DescriptionCard(props) {
   const classes = useStyles();
-  const CardContents = productInfo[0];
   
   return (
     <Card className={classes.root}>

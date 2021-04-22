@@ -4,7 +4,6 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +31,6 @@ export default function CheckboxesGroup() {
   };
 
   const { yugioh, pokemon, musicalInstuments,sportsCards,games,other } = state;
-  const error = [yugioh, pokemon, musicalInstuments,sportsCards,games,other].filter((v) => v).length !== 2;
 
   return (
     <div className={classes.root}>

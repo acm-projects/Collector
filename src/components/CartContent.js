@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CartProductCards from './CartProductCards';
 import {Grid} from '@material-ui/core';
-import ProductList from '../static/ProductConstants'
 import { db } from '../firebase';
 
 

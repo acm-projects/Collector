@@ -15,13 +15,6 @@ import { CssBaseline } from '@material-ui/core';
 import Homepage from './Homepage'
 import CreateListing from './CreateListing'
 import Cart from './Cart'
-import { Provider } from 'react-redux'
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/firestore'
-import {createStore, combineReducers, compose } from 'redux'
-import { ReactReduxFirebaseProvider, firebaseReducer } from 'react-redux-firebase'
-import { createFirestoreInstance, firestoreReducer } from 'redux-firestore'
 
 
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCards';
 import {Grid} from '@material-ui/core';
-import ItemPage from './ItemPage'
 import { db } from '../firebase';
 
 
@@ -15,7 +14,6 @@ const Content = () => {
             id: doc.id,
             product: doc.data()
         })))
-        console.log(listings)
       })
       }
       fetchData();
