@@ -3,6 +3,25 @@ import { Form,Button,Card,Alert} from "react-bootstrap"
 import {useAuth} from '../contexts/AuthContext'
 import {Link} from "react-router-dom"
 import {db} from '../firebase'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+
+const theme = createMuiTheme(
+  {
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
 
 export default function Signup() {
     const emailRef=useRef()
@@ -38,6 +57,7 @@ export default function Signup() {
     }
 
     return (
+        <ThemeProvider theme={theme}>
         <>
             <Card>
                 <Card.Body>
@@ -68,5 +88,6 @@ export default function Signup() {
                     Already have an account?<Link to="/login"> Log In</Link>
                 </div>
         </>
+        </ThemeProvider>
     )
 }

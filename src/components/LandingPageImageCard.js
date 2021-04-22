@@ -7,8 +7,26 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Collapse from "@material-ui/core/Collapse";
-
 import Typography from "@material-ui/core/Typography";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+
+const theme = createMuiTheme(
+  {
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
 
 const useStyles = makeStyles({
   root: {
@@ -44,6 +62,7 @@ export default function ImageCard({ CardContents, checked }) {
   const classes = useStyles();
 
   return (
+    <ThemeProvider theme={theme}>
     <Collapse in={checked} {...(checked ? { timeout: 1000 } : {})}>
       <Card className={classes.root}>
         <CardActionArea>
@@ -78,5 +97,6 @@ export default function ImageCard({ CardContents, checked }) {
         </CardActions>
       </Card>
     </Collapse>
+    </ThemeProvider>
   );
 }

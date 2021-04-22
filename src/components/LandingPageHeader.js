@@ -1,8 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, IconButton, Toolbar, Collapse } from "@material-ui/core";
+import { AppBar, IconButton, Toolbar, Collapse, createMuiTheme, ThemeProvider } from "@material-ui/core";
 import { Home, ExpandMore } from "@material-ui/icons";
 import { Link as Scroll } from "react-scroll";
+
+const theme = createMuiTheme(
+  {
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,6 +67,7 @@ export default function App() {
     setChecked(true);
   }, []);
   return (
+    <ThemeProvider theme={theme}>
     <div className={classes.root} id="header">
       <AppBar className={classes.appbar} elevation={0}>
         <Toolbar className={classes.appbarWrapper}>
@@ -77,5 +96,6 @@ export default function App() {
         </div>
       </Collapse>
     </div>
+    </ThemeProvider>
   );
 }

@@ -9,11 +9,29 @@ import Condition from './Filters/condition';
 import Price from './Filters/price';
 import Return from './Filters/returns';
 import Sort from './Filters/sort';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
-
+const theme = createMuiTheme(
+  {
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
 
 const App= () => {
   return (
+    <ThemeProvider theme={theme}>
     <Grid container direction= "column">
       <Grid item>
           <Header />
@@ -53,6 +71,7 @@ const App= () => {
           <Footer />
       </Grid>
     </Grid>
+    </ThemeProvider>
   );
 }
 

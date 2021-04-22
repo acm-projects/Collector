@@ -32,6 +32,24 @@ import available5 from "../assets/img/examples/coin.jpeg";
 
 import styles from "../assets/jss/profilePage.js";
 
+const theme = createMuiTheme(
+  {
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
+
 const useStyles = makeStyles(styles);
 
 export default function ProfilePage(props) {
@@ -44,6 +62,7 @@ export default function ProfilePage(props) {
   );
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
   return (
+    <ThemeProvider theme={theme}>
     <div>
       <Header />
       <Parallax small filter image={require("../assets/img/profile-bg.jpg")} />
@@ -204,7 +223,9 @@ export default function ProfilePage(props) {
           </div>
         </div>
       </div>
+      <br></br><br></br>
       <Footer />
     </div>
+    </ThemeProvider>
   );
 }

@@ -9,7 +9,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
-import { Avatar, CardHeader, IconButton } from "@material-ui/core";
+import { Avatar, CardHeader, IconButton, createMuiTheme, ThemeProvider } from "@material-ui/core";
+import { StarBorder } from "@material-ui/icons";
 import productInfo from "../static/product1Info";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import ShareIcon from "@material-ui/icons/Share";
@@ -17,6 +18,24 @@ import Comments from './Comments';
 import Footer from "./footer";
 import Header from "./Header/header";
 import { db } from '../firebase';
+
+const theme = createMuiTheme(
+  {
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
 
 const useStyles = makeStyles({
   root: {
@@ -65,6 +84,7 @@ function Final(props) {
   }, []);
 
   return (
+    <ThemeProvider theme={theme}>
     <Grid container direction="column">
       <Grid item>
         <Header />
@@ -123,13 +143,14 @@ function Final(props) {
       <br></br>
       <Footer />
     </Grid>
-    
+    </ThemeProvider>
   );
 }
 
 function Images(props) {
   const classes = useStyles();
   return (
+    <ThemeProvider theme={theme}>
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
@@ -141,12 +162,14 @@ function Images(props) {
         />
       </CardActionArea>
     </Card>
+    </ThemeProvider>
   );
 }
 
 function AddToCartCard(props) {
   const classes = useStyles();
   return (
+    <ThemeProvider theme={theme}> 
     <Card className={classes.root}>
       <CardActionArea>
         <CardContent>
@@ -182,6 +205,7 @@ function AddToCartCard(props) {
         <Button className={classes.button}> Add to Cart</Button>
       </CardActions>
     </Card>
+    </ThemeProvider>
   );
 }
 
@@ -189,6 +213,7 @@ function DescriptionCard(props) {
   const classes = useStyles();
   
   return (
+    <ThemeProvider theme={theme}>
     <Card className={classes.root}>
         <CardContent>
           <Typography
@@ -210,6 +235,7 @@ function DescriptionCard(props) {
         </CardContent>
       
     </Card>
+    </ThemeProvider>
   );
 }
 
@@ -217,6 +243,7 @@ function SellerCard (props) {
     const {avatar, sellerName, sellerRating, sellerTime} = productInfo[0];
     const classes = useStyles();
     return (
+      <ThemeProvider theme={theme}>
       <Card className={classes.root}>
           <CardHeader
           avatar={ <Avatar src={avatar} />}
@@ -238,6 +265,7 @@ function SellerCard (props) {
           <Button className={classes.button}size="small">See other Listings</Button>
         </CardActions>
       </Card>
+      </ThemeProvider>
     );
   }
 export default Final;

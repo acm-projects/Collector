@@ -3,6 +3,25 @@ import { Form,Button,Card,Alert} from "react-bootstrap"
 import {useAuth} from '../contexts/AuthContext'
 import {Link,useHistory} from "react-router-dom"
 import {storage, db} from '../firebase'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+
+const theme = createMuiTheme(
+  {
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
 
 export default function CreateListing() {
     const [itemNameRef,setItemNameRef]=React.useState("")
@@ -80,7 +99,7 @@ export default function CreateListing() {
                     .child(image.name)
                     .getDownloadURL()
                     .then(urlImg => {
-                        setUrl(urlImg)
+                        setTimeout(setUrl(urlImg),2000)
                         console.log(urlImg)
                     })
             }
@@ -105,6 +124,7 @@ export default function CreateListing() {
     /*Created a dummy "create listing" page. We are now capable of posting listings to our website.*/
     return (
         <>
+        <ThemeProvider theme={theme}>
         <Card>
                 <Card.Body>
                 <h2 className="text-center mb-4">Sell Something!</h2>  
@@ -133,9 +153,10 @@ export default function CreateListing() {
                 </Form>
                 </Card.Body>
             </Card>
+        </ThemeProvider>
         <div className="w-100 text-center mt-2">
                     <Link to="/"> Back to dashboard</Link>
-        </div>
+        </div>        
         </>
     )
 }

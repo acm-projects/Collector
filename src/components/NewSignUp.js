@@ -46,7 +46,7 @@ export default function Login() {
             setError("")
             setLoading(true)
             await login(emailRef,passwordRef)
-            history.push("/")
+            history.push("/dashboard")
         } catch (err) {
             console.log(err)
             switch(err.code) {
@@ -93,20 +93,19 @@ export default function Login() {
                   <TextField id="standard-password-input" label="Password" margin="normal" type="password" value={passwordRef} onChange={handleChangePassword} required InputProps={{ startAdornment: <InputAdornment position="start">
                     <LockRounded color="secondary"/>
                   </InputAdornment>}}/>
+                  <TextField id="standard-password-input" label="Confirm Password" margin="normal" type="password" value={passwordRef} onChange={handleChangePassword} required InputProps={{ startAdornment: <InputAdornment position="start">
+                    <LockRounded color="secondary"/>
+                  </InputAdornment>}}/>
                   <div style={{ height: 20}} />
                   <Button color="secondary" variant="contained" disabled={loading} type="submit">
-                    Log in            
+                    Sign Up           
                   </Button>
                   <div style={{ height: 20}} />
-                  <Button href="/signup" color="primary" variant="outlined">
-                    Not a collector yet?        
-                  </Button>
+                  
                 </div>
                 <div>
                   <Grid item>
-                    <Button color="primary" variant="outlined">
-                      Forgot your password?
-                    </Button>
+                    
                   </Grid>
                 </div>
               </Grid>
