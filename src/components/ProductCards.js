@@ -30,7 +30,7 @@ const theme = createMuiTheme(
 const useStyles = makeStyles({
   root: {
     maxWidth: 685,
-    minHeight: 350,
+    minHeight: 550,
   },
   button:{
     backgroundColor:'#d3ac2b'
@@ -59,7 +59,7 @@ const ProductCard = (props) => {
         subheader= {`$${price}`}
       />
       <Link to={`/item/${itemId}`}>
-            <CardMedia style={{height: "175px", width:'auto'}} image={image}/>
+            <CardMedia style={{height: "420px", width:'auto', justify:'center'}} image={image} className={classes.image}/>
       </Link>
       <CardContent>
         <Typography variant="h5" component="h3">
