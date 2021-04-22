@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Carousel from "react-material-ui-carousel";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -12,12 +12,12 @@ import { Grid } from "@material-ui/core";
 import { Avatar, CardHeader, IconButton, createMuiTheme, ThemeProvider } from "@material-ui/core";
 import { StarBorder } from "@material-ui/icons";
 import productInfo from "../static/product1Info";
-import productImages from "../static/product1Images";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import ShareIcon from "@material-ui/icons/Share";
 import Comments from './Comments';
 import Footer from "./footer";
 import Header from "./Header/header";
+import { db } from '../firebase';
 
 const theme = createMuiTheme(
   {
@@ -57,19 +57,31 @@ const useStyles = makeStyles({
     backgroundColor:'#d3ac2b'
 }
 });
+
 function Pictures(props) {
+  console.log(props.productImage)
   return (
     <Carousel>
-      {productImages.map((item, i) => (
-        <Images key={i} item={item} />
-      ))}
+        <Images item={props.productImage} />
     </Carousel>
   );
 }
 
-function Final() {
-  const product = productInfo[0];
+
+
+function Final(props) {
+  
   const classes = useStyles();
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    async function fetchData() {
+      db.listings.doc(props.match.params.id).get().then((doc) => {
+        setProduct(doc.data());
+      });
+    }
+    fetchData();
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -86,8 +98,6 @@ function Final() {
           <Typography className={classes.itemNumber}>
             {"Item Number: "}
             {product.itemNumber}
-
-            
           </Typography>
         </Grid>
         <IconButton className={classes.icons}>
@@ -101,11 +111,11 @@ function Final() {
       <Grid Item container>
         <Grid item xs={0} sm={1} />
         <Grid item xs={12} sm={5}>
-          <Pictures />
+          <Pictures productImage={product.image} />
         </Grid>
         <Grid item xs={0} sm={1} />
         <Grid item xs={12} sm={4}>
-          <AddToCartCard />
+          <AddToCartCard title={product.title} category={product.category} shipping={product.shipping} condition={product.condition} returns={product.returns}/>
         </Grid>
         <Grid item xs={0} sm={2} />
       </Grid>
@@ -113,14 +123,14 @@ function Final() {
       <Grid Item container>
         <Grid item xs={0} sm={1} />
         <Grid item xs={12} sm={10}>
-          <DescriptionCard />
+          <DescriptionCard description={product.description}/>
         </Grid>
       </Grid>
         <br></br>
       <Grid Item container>
         <Grid item xs={0} sm={1} />
         <Grid item xs={12} sm={10}>
-          <SellerCard />
+          <SellerCard seller={product.seller}/>
         </Grid>
       </Grid>
       <br></br>
@@ -147,7 +157,7 @@ function Images(props) {
           component="img"
           alt="Contemplative Reptile"
           height="340"
-          image={props.item.imageURL}
+          image={props.item}
           title="Contemplative Reptile"
         />
       </CardActionArea>
@@ -156,9 +166,8 @@ function Images(props) {
   );
 }
 
-function AddToCartCard({}) {
+function AddToCartCard(props) {
   const classes = useStyles();
-  const CardContents = productInfo[0];
   return (
     <ThemeProvider theme={theme}> 
     <Card className={classes.root}>
@@ -170,7 +179,7 @@ function AddToCartCard({}) {
             component="h1"
             className={classes.title}
           >
-            {CardContents.title}
+            {props.title}
           </Typography>
           <Typography
             variant="body2"
@@ -179,16 +188,16 @@ function AddToCartCard({}) {
             className={classes.desc}
           >
               {"Category: "}
-            {CardContents.category}
+            {props.category}
             <br></br><br></br>
               {"Shipping: "}
-            {CardContents.shipping}
+            {props.shipping}
             <br></br><br></br>
             {"Condition: "}
-            {CardContents.condition}
+            {props.condition}
             <br></br><br></br>
             {"Returns: "}
-            {CardContents.returns}
+            {props.returns}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -200,9 +209,9 @@ function AddToCartCard({}) {
   );
 }
 
-function DescriptionCard({}) {
+function DescriptionCard(props) {
   const classes = useStyles();
-  const CardContents = productInfo[0];
+  
   return (
     <ThemeProvider theme={theme}>
     <Card className={classes.root}>
@@ -221,7 +230,7 @@ function DescriptionCard({}) {
             component="p"
             className={classes.desc}
           >
-            {CardContents.description}
+            {props.description}
           </Typography>
         </CardContent>
       
@@ -230,7 +239,7 @@ function DescriptionCard({}) {
   );
 }
 
-function SellerCard ({}) {
+function SellerCard (props) {
     const {avatar, sellerName, sellerRating, sellerTime} = productInfo[0];
     const classes = useStyles();
     return (
@@ -239,7 +248,7 @@ function SellerCard ({}) {
           <CardHeader
           avatar={ <Avatar src={avatar} />}
           
-          title={sellerName}
+          title={props.seller}
           subheader= {sellerRating}
           
         />

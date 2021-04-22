@@ -30,7 +30,6 @@ const useStyles = makeStyles({
 
 export default function OutlinedCard() {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
   const ItemNum =1
   const itemPrice = 33.33
   const shippingPrice = 22.33

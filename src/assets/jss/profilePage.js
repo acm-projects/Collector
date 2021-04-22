@@ -1,5 +1,4 @@
 import { container, title } from "./material-kit-react.js";
-import { createMuiTheme } from '@material-ui/core/styles';
 
 import imagesStyle from "./material-kit-react/imagesStyles";
 
@@ -59,22 +58,5 @@ const profilePageStyle = {
     textAlign: "center"
   }
 };
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#ffdd5e',
-      main: '#d3ac2b',
-      dark: '#9e7d00',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#5e677d',
-      main: '#333d51',
-      dark: '#0b1729',
-      contrastText: '#000',
-    },
-  },
-});
 
 export default profilePageStyle;

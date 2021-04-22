@@ -2,13 +2,6 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import Header from "./Header/header";
 import CartContent from "./CartContent";
-import Carousel from "./SectionCarousel";
-import Footer from "./footer";
-import Category from "./Filters/Category";
-import Condition from "./Filters/condition";
-import Price from "./Filters/price";
-import Return from "./Filters/returns";
-import Sort from "./Filters/sort";
 import { makeStyles } from "@material-ui/core/styles";
 import CartCard from './CartCard'
 
