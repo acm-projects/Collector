@@ -1,5 +1,6 @@
 import React,{ useContext, useState, useEffect} from 'react'
 import { auth,db } from'../firebase'
+import firebase from "firebase/app"
 
 const AuthContext=React.createContext()
 
@@ -48,7 +49,18 @@ export function AuthProvider({children}) {
 
     function login(email,password){
         console.log(auth.signInWithEmailAndPassword(email,password));
-        return auth.signInWithEmailAndPassword(email,password)
+        return auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+        .then(() => {
+          // Existing and future Auth states are now persisted in the current
+          // session only. Closing the window would clear any existing state even
+          // if a user forgets to sign out.
+          // ...
+          // New sign-in will be persisted with session persistence.
+          return auth.signInWithEmailAndPassword(email, password);
+        })
+        .catch((error) => {
+          console.log("Sign In Failed")
+        });
     }
     
     useEffect(()=>{

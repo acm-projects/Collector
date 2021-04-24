@@ -31,7 +31,10 @@ import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import InfoIcon from '@material-ui/icons/Info';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {auth} from '../../firebase';
+import {useAuth} from '../../contexts/AuthContext';
+
 const drawerWidth = 240;
 
 const theme = createMuiTheme(
@@ -188,9 +191,9 @@ export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
-
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const {currentUser}=useAuth();
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -212,6 +215,13 @@ export default function PrimarySearchAppBar() {
     handleMobileMenuClose();
   };
 
+  const handleLogout=()=>{
+    console.log("Logout Initiated");
+    auth.signOut().then(()=>{
+      console.log("User Signed Out")
+    });
+}
+
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
@@ -229,6 +239,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem onClick={handleMenuClose}>My Collections</MenuItem>
       <MenuItem onClick={handleMenuClose}>My Account</MenuItem>
+      <MenuItem onClick={handleLogout}>Log Out</MenuItem>
     </Menu>
   );
 
@@ -332,12 +343,14 @@ export default function PrimarySearchAppBar() {
             </IconButton>
             <IconButton aria-label="show 4 new items" className={classes.tertiaryColor}>
               <Badge badgeContent={0} color="secondary">
-                <ShoppingCartIcon />
+              <Link to="/cart" style={{ textDecoration: 'none' }} >
+              <ShoppingCartIcon color="secondary"/>
+              </Link>
               </Badge>
             </IconButton>
             <IconButton aria-label="show 17 new notifications" className={classes.tertiaryColor}>
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+              <Badge badgeContent={0} color="secondary">
+                <NotificationsIcon color="secondary"/>
               </Badge>
             </IconButton>
             <IconButton
