@@ -64,7 +64,7 @@ export default function SimpleBottomNavigation() {
     >
       <BottomNavigationAction label="Home"
       icon={<HomeIcon color="secondary"/>} />
-      <BottomNavigationAction label="Forums" icon={<ForumIcon color="secondary"/>} />
+      
       <BottomNavigationAction label="Shop" className={classes.primaryColor} icon={<ShopIcon color="secondary" />} />
     </BottomNavigation>
     </ThemeProvider>

@@ -143,7 +143,7 @@ export default function AddressForm() {
       case 1: setItemShippingRef("Shipping Available")
               break
 
-      case 2: setItemConditionRef("Pick-Up Only")
+      case 2: setItemShippingRef("Pick-Up Only")
               break
     }
   }
@@ -371,22 +371,7 @@ export default function AddressForm() {
         <Grid item xs={0} sm={4} />
         <Grid item xs={0} sm={1} />
         <Grid item xs={12} sm={7}>
-        <TextField
-          id="shipping"
-          label="Shipping Cost"
-          type="number"
-          variant="filled"
-
-          InputLabelProps={{
-            shrink: true,
-            
-          }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">$</InputAdornment>
-            ),
-          }}
-        />
+        
         </Grid>
         <Grid item xs={0} sm={4} />
         <Grid item xs={0} sm={1} />

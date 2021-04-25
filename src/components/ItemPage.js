@@ -17,7 +17,10 @@ import ShareIcon from "@material-ui/icons/Share";
 import Comments from './Comments';
 import Footer from "./footer";
 import Header from "./Header/header";
-import { db } from '../firebase';
+import { db,firestore } from '../firebase';
+import {useAuth} from '../contexts/AuthContext';
+import {useHistory} from "react-router-dom";
+
 
 const theme = createMuiTheme(
   {
@@ -73,15 +76,74 @@ function Final(props) {
   
   const classes = useStyles();
   const [product, setProduct] = useState({});
-
+  const [listingId, setListingId] = useState("");
+  const { currentUser } = useAuth();
+  const history=useHistory();
   useEffect(() => {
     async function fetchData() {
       db.listings.doc(props.match.params.id).get().then((doc) => {
         setProduct(doc.data());
+        setListingId(doc.id);
       });
     }
     fetchData();
   }, []);
+
+  function AddToCartCard(props) {
+    const classes = useStyles();
+    
+      
+    
+    async function AddToCart(){
+      if(currentUser)
+      {
+        console.log(currentUser.uid);
+        await firestore.collection('cart').doc(currentUser.uid).collection("cartContents").add(product);
+      }else{
+       history.push("/login");
+      }
+    }
+
+    return (
+      <ThemeProvider theme={theme}> 
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="body1"
+              component="h1"
+              className={classes.title}
+            >
+              {"Item Info"}
+            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              className={classes.desc}
+            >
+                {"Category: "}
+              {props.category}
+              <br></br><br></br>
+                {"Shipping: "}
+              {props.shipping}
+              <br></br><br></br>
+              {"Condition: "}
+              {props.condition}
+              <br></br><br></br>
+              {"Returns: "}
+              {props.returns}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button className={classes.button} onClick={AddToCart}> Add to Cart</Button>
+        </CardActions>
+      </Card>
+      </ThemeProvider>
+    );
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -151,49 +213,6 @@ function Images(props) {
           title="Contemplative Reptile"
         />
       </CardActionArea>
-    </Card>
-    </ThemeProvider>
-  );
-}
-
-function AddToCartCard(props) {
-  const classes = useStyles();
-  return (
-    <ThemeProvider theme={theme}> 
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardContent>
-          <Typography
-            gutterBottom
-            variant="body1"
-            component="h1"
-            className={classes.title}
-          >
-            {"Item Info"}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            className={classes.desc}
-          >
-              {"Category: "}
-            {props.category}
-            <br></br><br></br>
-              {"Shipping: "}
-            {props.shipping}
-            <br></br><br></br>
-            {"Condition: "}
-            {props.condition}
-            <br></br><br></br>
-            {"Returns: "}
-            {props.returns}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button className={classes.button}> Add to Cart</Button>
-      </CardActions>
     </Card>
     </ThemeProvider>
   );
