@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from '@material-ui/core';
 import Header from './Header/header';
 import Content from "./Content";
@@ -9,6 +9,7 @@ import Condition from './Filters/condition';
 import Price from './Filters/price';
 import Return from './Filters/returns';
 import Sort from './Filters/sort';
+import { db } from '../firebase';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
 const theme = createMuiTheme(
@@ -29,7 +30,31 @@ const theme = createMuiTheme(
   },
 });
 
-const App= () => {
+const Homepage = () => {
+  const [listings, setListings] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async() => {
+      db.listings.onSnapshot(snapshot => {
+        setListings(snapshot.docs.map(doc => ({
+          id: doc.id,
+          product: doc.data()
+      })))
+      console.log(listings)
+    })
+    }
+    console.log("Check")
+    fetchData();
+  }, []);
+
+  const getProductCard =  (id, product) => {
+    return (
+        <Grid item xs={12} sm={3}>
+          <ProductCard key={id} itemId={id} {...product} />
+        </Grid>
+      );
+    };
+
   return (
     <ThemeProvider theme={theme}>
     <Grid container direction= "column">
@@ -61,7 +86,13 @@ const App= () => {
         </Grid>
 
         <Grid item xs={12} sm={9}>
-          <Content />
+          <Grid container spacing={4}>
+                {
+                  listings.map(({id, product}) => (
+                      getProductCard(id, product)
+                    ))
+                }
+          </Grid>
         </Grid>
         <Grid item xs={0} sm={2} />
       </Grid>
@@ -75,7 +106,7 @@ const App= () => {
   );
 }
 
-export default App; 
+export default Homepage; 
 
 
 

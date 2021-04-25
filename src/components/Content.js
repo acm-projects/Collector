@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCards';
 import {Grid} from '@material-ui/core';
-import { db } from '../firebase';
+import {useDispatch} from 'react-redux';
+import {saveItems} from '../redux/actions'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import {firestoreConnect} from 'react-redux-firebase'
 
+const Content = (props) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(saveItems(props.items));
+  }, [props.items]);
+  
 
-const Content = () => {
-    const [listings, setListings] = useState([]);
-    
-    useEffect(() => {
-      const fetchData = async() => {
-        db.listings.onSnapshot(snapshot => {
-          setListings(snapshot.docs.map(doc => ({
-            id: doc.id,
-            product: doc.data()
-        })))
-      })
-      }
-      fetchData();
-    }, []);
-    const getProductCard =  (id, product) => {
+  const products = props.products;
+
+  const getProductCard =  (id, product) => {
         return (
             <Grid item xs={12} sm={3}>
               <ProductCard key={id} itemId={id} {...product} />
@@ -28,8 +26,8 @@ const Content = () => {
     return (
         <Grid container spacing={4}>
               {
-                listings.map(({id, product}) => (
-                    getProductCard(id, product)
+                products && products.length > 0 && products.map((product) => (
+                    getProductCard(product.id, product)
                   ))
               }
         </Grid>
@@ -37,4 +35,16 @@ const Content = () => {
 
 };
 
-export default Content;
+const mapStateToProps = (state) => {
+  return {
+    items: state.firestore.ordered.listings,
+    products: state.products.tempItems
+  }
+}
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    { collection: 'listings' }
+  ]),
+)(Content);
