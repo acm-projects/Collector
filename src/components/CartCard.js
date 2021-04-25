@@ -66,15 +66,15 @@ export default function OutlinedCard() {
         
         
         <Typography variant="h5" component="h2">
-          Items({ItemNum}): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${itemPrice}
+          Items({ItemNum}): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${itemPrice.toFixed(2)}
           <br />
-          Shipping: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${shippingPrice}
+          Shipping: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${shippingPrice.toFixed(2)}
         </Typography>
         <br />
         <Divider />
         <br />
         <Typography variant="h5" component="h2" >
-          Total : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${itemPrice+shippingPrice}
+          Total: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${(itemPrice+shippingPrice).toFixed(2)}
         </Typography>
       </CardContent>
       <CardActions>
