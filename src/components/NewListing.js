@@ -18,8 +18,25 @@ import {useAuth} from '../contexts/AuthContext';
 import { useHistory} from "react-router-dom";
 import { Form, Alert} from "react-bootstrap";
 import {storage, db} from '../firebase';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
-
+const theme = createMuiTheme(
+  {
+  palette: {
+    primary: {
+      light: '#5e677d',
+      main: '#333d51',
+      dark: '#0b1729',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ffdd5e',
+      main: '#d3ac2b',
+      dark: '#9e7d00',
+      contrastText: '#000',
+    },
+  },
+});
 
 const useStyles = makeStyles({
   title: {
@@ -216,6 +233,7 @@ export default function AddressForm() {
     }
 
   return (
+    <ThemeProvider theme={theme}>
     <Form onSubmit={handleSubmit}>
       {error && <Alert variant="danger">{error}</Alert>}
     <React.Fragment>
@@ -409,5 +427,6 @@ export default function AddressForm() {
       </Grid>
     </React.Fragment>
     </Form>
+    </ThemeProvider>
   );
 }
