@@ -11,7 +11,8 @@ import { firestore } from '../firebase';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 350,
+    minHeight: 200,
   },
   bullet: {
     display: 'inline-block',
@@ -64,16 +65,16 @@ export default function OutlinedCard() {
         
         
         
-        <Typography variant="body2" component="p">
-          Items({ItemNum}): ${itemPrice}
+        <Typography variant="h5" component="h2">
+          Items({ItemNum}): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${itemPrice}
           <br />
-          Shipping: ${shippingPrice}
+          Shipping: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${shippingPrice}
         </Typography>
         <br />
         <Divider />
         <br />
         <Typography variant="h5" component="h2" >
-          Total : ${itemPrice+shippingPrice}
+          Total : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${itemPrice+shippingPrice}
         </Typography>
       </CardContent>
       <CardActions>

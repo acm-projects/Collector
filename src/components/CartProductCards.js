@@ -10,6 +10,8 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    width: '500px',
+    height: '220px',
   },
   details: {
     display: 'flex',
@@ -20,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
   },
   cover: {
     width: 151,
+    marginLeft: 'auto',
+
   },
   controls: {
     display: 'flex',
