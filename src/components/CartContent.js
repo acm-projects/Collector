@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import CartProductCards from './CartProductCards';
 import {Grid} from '@material-ui/core';
 import { db } from '../firebase';
-
-
+import {useAuth} from '../contexts/AuthContext';
+import { firestore } from '../firebase';
 
 const Content = () => {
     const [listings, setListings] = useState([]);
+    const {currentUser}=useAuth();
     useEffect(() => {
-      db.listings.onSnapshot(snapshot => {
+      firestore.collection('cart').doc(currentUser.uid).collection('cartContents').onSnapshot(snapshot => {
           setListings(snapshot.docs.map(doc => ({
             id: doc.id,
             product: doc.data()

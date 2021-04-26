@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { Button, Comment, Form, Header } from 'semantic-ui-react'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
-
+import { firestore } from '../firebase';
+import {useAuth} from '../contexts/AuthContext';
+import {useHistory} from "react-router-dom";
+// ID of the doc
+// Retrieve old Comments from subcollection
+// Write Comment to subcollection
 const theme = createMuiTheme(
   {
   palette: {
@@ -20,79 +25,75 @@ const theme = createMuiTheme(
   },
 });
 
-const CommentExampleThreaded = () => (
-  <ThemeProvider theme={theme}>
-  <Comment.Group threaded>
-    <Header as='h3' dividing>
-      Comments
-    </Header>
-
+function CommentCard(props){
+  const {user, date, body} = props;
+  return(
+    <Comment.Group>
     <Comment>
-      <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/matt.jpg' />
-      <Comment.Content>
-        <Comment.Author as='a'>Matt</Comment.Author>
-        <Comment.Metadata>
-          <span>Today at 5:42PM</span>
-        </Comment.Metadata>
-        <Comment.Text>How artistic!</Comment.Text>
-        <Comment.Actions>
-          <a>Reply</a>
-        </Comment.Actions>
-      </Comment.Content>
-    </Comment>
-
-    <Comment>
-      <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/elliot.jpg' />
-      <Comment.Content>
-        <Comment.Author as='a'>Elliot Fu</Comment.Author>
-        <Comment.Metadata>
-          <span>Yesterday at 12:30AM</span>
-        </Comment.Metadata>
-        <Comment.Text>
-          <p>This has been very useful for my research. Thanks as well!</p>
-        </Comment.Text>
-        <Comment.Actions>
-          <a>Reply</a>
-        </Comment.Actions>
-      </Comment.Content>
-
-      <Comment.Group>
-        <Comment>
-          <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
-          <Comment.Content>
-            <Comment.Author as='a'>Jenny Hess</Comment.Author>
-            <Comment.Metadata>
-              <span>Just now</span>
-            </Comment.Metadata>
-            <Comment.Text>Elliot you are always so right :)</Comment.Text>
-            <Comment.Actions>
-              <a>Reply</a>
-            </Comment.Actions>
-          </Comment.Content>
-        </Comment>
+        <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/matt.jpg' />
+        <Comment.Content>
+          <Comment.Author as='a'>{user}</Comment.Author>
+          <Comment.Metadata>
+            <span>{date}</span>
+          </Comment.Metadata>
+          <Comment.Text>{body}</Comment.Text>
+          <Comment.Actions>
+            <a>Reply</a>
+          </Comment.Actions>
+        </Comment.Content>
+      </Comment>
       </Comment.Group>
-    </Comment>
+    )
+}
+const CommentExampleThreaded = (props) => {
+  const [comments, setComments] = useState([]);
+  const [commentBody, setCommentBody]=useState("");
+  const {currentUser}=useAuth();
+  const history=useHistory();
+  var currentDate = Date().toLocaleString();
 
-    <Comment>
-      <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />
-      <Comment.Content>
-        <Comment.Author as='a'>Joe Henderson</Comment.Author>
-        <Comment.Metadata>
-          <span>5 days ago</span>
-        </Comment.Metadata>
-        <Comment.Text>Dude, this is awesome. Thanks so much</Comment.Text>
-        <Comment.Actions>
-          <a>Reply</a>
-        </Comment.Actions>
-      </Comment.Content>
-    </Comment>
+  const handleChangeCommentBody=(e)=>{
+    setCommentBody(e.target.value);
+  }
 
-    <Form reply>
-      <Form.TextArea />
-      <Button content='Add Reply' labelPosition='left' icon='edit' primary />
+  function PostComment(){
+    if(currentUser){
+        firestore.collection('listings').doc(props.id).collection('comments').add({
+        user:currentUser.displayName,
+        date:currentDate,
+        body:commentBody
+      });
+    }else{
+      history.push("/login");
+    }
+  }
+  console.log(props.id)
+    useEffect(() => {
+    firestore.collection('listings').doc(props.id).collection('comments').onSnapshot(snapshot => {
+        setComments(snapshot.docs.map(doc => ({
+          id: doc.id,
+          product: doc.data()
+      })))
+    })
+  }, []);
+  const getComments =  (id, product) => {
+    return (
+          CommentCard(product)
+      );
+    };
+  return (
+    <div>
+      {
+       comments.map(({id, product}) => (
+          getComments(id, product)
+        ))
+      }
+      <Form onSubmit={PostComment}>
+      <Form.TextArea onChange={handleChangeCommentBody}/>
+      <Button content='Add Reply' labelPosition='left' icon='edit' primary type="submit"/>
     </Form>
-  </Comment.Group>
-  </ThemeProvider>
-)
+    </div>
+  );
+}
 
 export default CommentExampleThreaded

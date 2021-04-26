@@ -18,7 +18,7 @@ import GridItem from "../components/Grid/GridItem.js";
 import NavPills from "../components/NavPills/NavPills.js";
 import Parallax from "../components/Parallax/Parallax.js";
 
-import profile from "../assets/img/faces/hector.jpeg";
+import profile from "../assets/img/faces/micheal.jpeg";
 import post1 from "../assets/img/examples/post-1.jpg";
 import post2 from "../assets/img/examples/post-2.jpg";
 import post3 from "../assets/img/examples/post-3.jpg";
@@ -76,8 +76,8 @@ export default function ProfilePage(props) {
                     <img src={profile} alt="..." className={imageClasses} />
                   </div>
                   <div className={classes.name}>
-                    <h3 className={classes.title}>Hector The Collector</h3>
-                    <h6>TREMBLE AT MY PRESTIGIOUS AND MINT-IN-BOX ACTION FIGURES!</h6>
+                    <h3 className={classes.title}>Micheal Kempner</h3>
+                    <h6>Dallas, TX</h6>
                     <Button justIcon link className={classes.margin5}>
                       <i className={"fab fa-twitter"} />
                     </Button>
@@ -93,8 +93,7 @@ export default function ProfilePage(props) {
             </GridContainer>
             <div className={classes.description}>
               <p>
-                My name's Hector and I'm here to say
-                I buy and trade collectibles all diggity-day{" "}
+                Dallas-Based collector specializing in Pokemon TCG{" "}
               </p>
             </div>
             <GridContainer justify="center">
@@ -223,7 +222,6 @@ export default function ProfilePage(props) {
           </div>
         </div>
       </div>
-      <br></br><br></br>
       <Footer />
     </div>
     </ThemeProvider>
