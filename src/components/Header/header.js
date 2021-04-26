@@ -34,7 +34,6 @@ import InfoIcon from '@material-ui/icons/Info';
 import {Link} from 'react-router-dom'
 import { filterNameAdd } from '../../redux/actions'
 import { useDispatch } from 'react-redux'
-import {Link} from 'react-router-dom';
 import {auth} from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
 

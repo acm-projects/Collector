@@ -18,7 +18,7 @@ import GridItem from "../components/Grid/GridItem.js";
 import NavPills from "../components/NavPills/NavPills.js";
 import Parallax from "../components/Parallax/Parallax.js";
 
-import profile from "../assets/img/faces/micheal.jpeg";
+import profile from "../assets/img/faces/micheal.jpg";
 import post1 from "../assets/img/examples/post-1.jpg";
 import post2 from "../assets/img/examples/post-2.jpg";
 import post3 from "../assets/img/examples/post-3.jpg";
