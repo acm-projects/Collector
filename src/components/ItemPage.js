@@ -189,7 +189,7 @@ function Final(props) {
       <Grid Item container>
         <Grid item xs={0} sm={1} />
         <Grid item xs={12} sm={10}>
-          <Comments />
+          <Comments id={props.match.params.id} />
         </Grid>
       </Grid>
       <br></br>
