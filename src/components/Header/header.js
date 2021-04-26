@@ -35,7 +35,6 @@ import {Link} from 'react-router-dom'
 import { filterNameAdd } from '../../redux/actions'
 import { useDispatch } from 'react-redux'
 import {auth} from '../../firebase';
-import {useAuth} from '../../contexts/AuthContext';
 
 const drawerWidth = 240;
 
@@ -195,8 +194,8 @@ export default function PrimarySearchAppBar() {
   const [open, setOpen] = React.useState(false);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const {currentUser}=useAuth();
 
+  
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -289,7 +288,7 @@ export default function PrimarySearchAppBar() {
     </ThemeProvider>
   );
   const dispatch = useDispatch();
-
+  
   return (
     <ThemeProvider theme={theme}>
     <div className={classes.grow}>

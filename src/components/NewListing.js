@@ -59,7 +59,7 @@ const useStyles = makeStyles({
 export default function AddressForm() {
 
     const classes = useStyles();
-    const [avatarRef,setAvatarRef]=React.useState("https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg")
+    const [avatarRef,setAvatarRef]=React.useState("")
     const [itemNameRef,setItemNameRef]=React.useState("")
     const [itemPriceRef,setItemPriceRef]=React.useState("")
     const [itemDescriptionRef,setItemDescriptionRef]=React.useState("")
@@ -214,7 +214,7 @@ export default function AddressForm() {
   const parsedPrice=parseFloat(itemPriceRef)
     async function addListing(urlImg){
         await db.listings.add({
-          avatar:avatarRef,
+          avatar: currentUser.photoURL,
           category: itemCategoryRef,
           condition: itemConditionRef,
           date: date,

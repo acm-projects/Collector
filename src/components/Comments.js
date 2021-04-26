@@ -26,11 +26,11 @@ const theme = createMuiTheme(
 });
 
 function CommentCard(props){
-  const {user, date, body} = props;
+  const {user, date, body, photo} = props;
   return(
     <Comment.Group>
     <Comment>
-        <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/matt.jpg' />
+        <Comment.Avatar as='a' src={photo} />
         <Comment.Content>
           <Comment.Author as='a'>{user}</Comment.Author>
           <Comment.Metadata>
@@ -61,7 +61,8 @@ const CommentExampleThreaded = (props) => {
         firestore.collection('listings').doc(props.id).collection('comments').add({
         user:currentUser.displayName,
         date:currentDate,
-        body:commentBody
+        body:commentBody,
+        photo: currentUser.photoURL
       });
     }else{
       history.push("/login");
@@ -69,7 +70,7 @@ const CommentExampleThreaded = (props) => {
   }
   console.log(props.id)
     useEffect(() => {
-    firestore.collection('listings').doc(props.id).collection('comments').onSnapshot(snapshot => {
+    firestore.collection('listings').doc(props.id).collection('comments').orderBy('date').onSnapshot(snapshot => {
         setComments(snapshot.docs.map(doc => ({
           id: doc.id,
           product: doc.data()
