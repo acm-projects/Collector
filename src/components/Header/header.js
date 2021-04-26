@@ -31,6 +31,9 @@ import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import InfoIcon from '@material-ui/icons/Info';
+import {Link} from 'react-router-dom'
+import { filterNameAdd } from '../../redux/actions'
+import { useDispatch } from 'react-redux'
 import {Link} from 'react-router-dom';
 import {auth} from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
@@ -237,7 +240,8 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>My Collections</MenuItem>
+     
+      <MenuItem onClick={handleMenuClose} component={Link} to='/profile' >My Collections</MenuItem>
       <MenuItem onClick={handleMenuClose}>My Account</MenuItem>
       <MenuItem onClick={handleLogout}>Log Out</MenuItem>
     </Menu>
@@ -285,6 +289,7 @@ export default function PrimarySearchAppBar() {
     </Menu>
     </ThemeProvider>
   );
+  const dispatch = useDispatch();
 
   return (
     <ThemeProvider theme={theme}>
@@ -324,6 +329,9 @@ export default function PrimarySearchAppBar() {
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
+              }}
+              onChange={(e) => {
+                dispatch(filterNameAdd(e.target.value));
               }}
               inputProps={{ 'aria-label': 'search' }}
             />

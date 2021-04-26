@@ -1,1 +1,3 @@
 export const SAVE_ITEMS = "SAVE_ITEMS"
+export const FILTER_NAME_ADD = 'FILTER_NAME_ADD'
+export const FILTER_NAME_DEL = 'FILTER_NAME_DEL'

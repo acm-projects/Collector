@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, createMuiTheme, ThemeProvider } from '@material-ui/core';
 import Header from './Header/header';
 import Content from "./Content";
@@ -9,6 +9,9 @@ import Condition from './Filters/condition';
 import Price from './Filters/price';
 import Return from './Filters/returns';
 import Sort from './Filters/sort';
+import { db } from '../firebase';
+import {useDispatch} from 'react-redux';
+import {saveItems} from '../redux/actions'
 
 const theme = createMuiTheme(
   {
@@ -30,7 +33,22 @@ const theme = createMuiTheme(
 
 
 
-const App= () => {
+const Gallery= () => {
+  const [listings, setListings] = useState([]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const fetchData = async() => {
+      db.listings.onSnapshot(snapshot => {
+        setListings(snapshot.docs.map(doc => ({
+          id: doc.id,
+          product: doc.data()
+      })))
+    })
+    }
+    console.log("Check")
+    fetchData();
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
     <Grid container direction= "column">
@@ -62,7 +80,7 @@ const App= () => {
         </Grid>
 
         <Grid item xs={12} sm={9}>
-          <Content />
+          <Content listings={listings}/>
         </Grid>
         <Grid item xs={0} sm={2} />
       </Grid>
@@ -76,4 +94,4 @@ const App= () => {
   );
 }
 
-export default App; 
+export default Gallery; 
