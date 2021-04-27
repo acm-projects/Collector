@@ -116,6 +116,7 @@ function Final(props) {
               className={classes.title}
             >
               {"Item Info"}
+              
             </Typography>
             <Typography
               variant="body2"
@@ -134,6 +135,9 @@ function Final(props) {
               <br></br><br></br>
               {"Returns: "}
               {props.returns}
+              <br></br><br></br>
+               {"Price: $"}
+              {props.price}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -175,7 +179,7 @@ function Final(props) {
         </Grid>
         <Grid item xs={0} sm={1} />
         <Grid item xs={12} sm={5}>
-          <AddToCartCard title={product.title} category={product.category} shipping={product.shipping} condition={product.condition} returns={product.returns}/>
+          <AddToCartCard title={product.title} category={product.category} shipping={product.shipping} condition={product.condition} returns={product.returns} price={product.price}/>
           <br></br><br></br>
           <DescriptionCard description={product.description}/>
           <br></br><br></br>
