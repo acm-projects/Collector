@@ -84,6 +84,9 @@ const CommentExampleThreaded = (props) => {
     };
   return (
     <div>
+      <Header as='h3' dividing>
+        Comments
+      </Header>
       {
        comments.map(({id, product}) => (
           getComments(id, product)
