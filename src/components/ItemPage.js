@@ -183,7 +183,7 @@ function Final(props) {
           <br></br><br></br>
           <DescriptionCard description={product.description}/>
           <br></br><br></br>
-          <SellerCard seller={product.seller}/>
+          <SellerCard seller={product.seller} avatar={product.avatar}/>
         </Grid>
         <Grid item xs={0} sm={2} />
       </Grid>
@@ -259,7 +259,7 @@ function SellerCard (props) {
       <ThemeProvider theme={theme}>
       <Card className={classes.root}>
           <CardHeader
-          avatar={ <Avatar src={avatar} />}
+          avatar={ <Avatar src={props.avatar} />}
           
           title={props.seller}
           subheader= {sellerRating}
